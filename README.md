@@ -20,18 +20,18 @@ This guide assumes that the reader is comfortable with what schema.org is, and h
 
 _To share and link legislation data at web-scale, in a decentralized way_.
 
-These 2 mockups show the dream in terms of search use-cases around legislation in major search engines :
+These 2 mockups show the "dream" in terms of search use-cases around legislation in major search engines :
 
-  1. A rich snippet in a search result page showing a Legislation :
+  - A rich snippet in a search result page showing a Legislation
   
   ![Legislation rich snippet](/images/legislation-rich-snippet.png)
 
-  2. A legislation shown as a knowledge graph entity on the side of a search results page :
+
+  - A legislation shown as a knowledge graph entity on the side of a search results page :
   
   ![Legislation in knowledge graph](/images/legislation-knowledge-graph.png)
 
-
-These 2 mockups show specific structured metadata about the act:
+These mockups display specific structured metadata about the act:
   - Title of the act
   - Summary
   - Whether the act is still in force or not
@@ -60,3 +60,9 @@ Interested readers can find more information on the community discussions that h
 The ELI ontology guides for publishing legislation metadata using ELI may also provide useful background information, although not targeted at schema.org :
   - [ELI methodological guide](https://op.europa.eu/en/publication-detail/-/publication/514875b4-5efd-11e8-ab9c-01aa75ed71a1)
   - [ELI technological guide](https://op.europa.eu/en/publication-detail/-/publication/8159b75d-5efc-11e8-ab9c-01aa75ed71a1)
+  
+### Overview of the schema.org metadata available to describe Legislation (and why this is insufficient)
+
+The necessary attributes to describe legislation in schema.org are summarized in this diagram, showing how the description of legislation is mixing generic attributes available on the class [CreativeWork](http://schema.org/CreativeWork), and specific attributes proposed for the specific description of Legislation :
+
+![Legislation schema.org diagram](/images/legislation-schemaorg-diagram.png)
