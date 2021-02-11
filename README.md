@@ -20,12 +20,29 @@ This guide assumes that the reader is comfortable with what schema.org is, and h
 
 _To share and link legislation data at web-scale, in a decentralized way_.
 
-These 2 mockups show our dream in terms of search use-cases around legislation in major search engines :
+These 2 mockups show the dream in terms of search use-cases around legislation in major search engines :
 
   1. A rich snippet in a search result page showing a Legislation :
   
+  ![Legislation rich snippet](/images/legislation-rich-snippet.png)
+
+  2. A legislation shown as a knowledge graph entity on the side of a search results page :
+  
+  ![Legislation in knowledge graph](/images/legislation-knowledge-graph.png)
 
 
+These 2 mockups show specific structured metadata about the act:
+  - Title of the act
+  - Summary
+  - Whether the act is still in force or not
+  - Keywords
+  - Links to latest or previous version of the legal text, with the date at which that version was published
+  - Number, or reference
+  - Jurisdiction (geographical area on which the act applies)
+  - Type of act
+  - Links to other texts (here, an abrogation link)
+  
+These are only mockups, of course, and they do not represent a commitment of any search engine to implement this as this is depicted.
 
 ### Resources
 
