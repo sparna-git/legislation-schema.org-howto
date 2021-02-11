@@ -1,6 +1,3 @@
----
-title: How to describe Legislation using schema.org
----
 
 ## Welcome to GitHub Pages
 
