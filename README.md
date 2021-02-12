@@ -2,6 +2,7 @@
 ## A guide for describing Legislation in schema.org 
 
 _last updated_ : 2021-02-11
+_author_ : Thomas Francart (thomas [dot] francart [at] sparna [dot] fr) 
 **/!\ This is work in progress**
 
 ### Welcome
@@ -67,12 +68,25 @@ The necessary attributes to describe legislation in schema.org are summarized in
 
 ![Legislation schema.org diagram](/images/legislation-schemaorg-diagram.png)
 
-This diagram gives a good overview of which properties are interesting/necessary for the description of legal acts, however it is not sufficient. The `Legislation` type in schema.org may be used to describe different things:
+This diagram gives a good overview of which properties are interesting/necessary for the description of legal acts, however it is not sufficient :
+  - It does not indicate that some properties carry different semantics depending on where they are expressed.
+  - It does not reflect the good practices in terms of legal act description, as seen in different EU Member States within the ELI Taskforce.
+  - It does not express the difference between what is a "base act" published in an Official Journal, what is an amending act, what is a consolidated version, etc.
+
+The rest of this guide captures the good practices in terms of data modeling for the description of legal acts and how to apply them in the context of the schema.org Legislation extension.
+
+In a sense it gives an _application profile_ of schema.org for the description of legislation.
+
+
+## Good practices for the description of Legislation in schema.org
+
+### What does the Legislation type means ?
+
+The `Legislation` type in schema.org may be used to describe different things:
 
   1. A **base act** published in an official journal. This is the "birth" of a legal act.
   2. An **amending act**, also published in an official journal, amending the base act. This is expressed like a "diff" applied on the base act ("In the base act, point 2 of article 3 is replaced by the following : ....")
   3. A **consolidated version** of the base act, as amended by one or more amending act. This is the base act, with all its "diffs" applied on it.
   4. The **"abstract" act**, that is the act as an intellectual work, independantly of one of its (consolidated) version. This is intuitively what we are using when writing a legal reference without specifying a version : _"Council Directive (EC) 93/104 concerning certain aspects of the organisation of working time [1993] OJ   L307/18 (Working  Time  Directive)"_.
   5. An **article or another subdivision** of the base act, or one of its subsequent consolidated version.
-
 The rest of this guide tries to propose an approach to describe and relate these conceptually different entities, using for each of them a subset of all the available properties to describe a legislation.
