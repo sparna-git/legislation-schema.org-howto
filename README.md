@@ -1,9 +1,9 @@
 
 ## A guide for describing Legislation in schema.org 
 
-_last updated_ : 2021-02-11
-_author_ : Thomas Francart (thomas [dot] francart [at] sparna [dot] fr) 
-**/!\ This is work in progress**
+  - _last updated_ : 2021-02-11
+  - _author_ : Thomas Francart (thomas [dot] francart [at] sparna [dot] fr) 
+  - status : **/!\ This is work in progress**
 
 ### Welcome
 
@@ -89,4 +89,26 @@ The `Legislation` type in schema.org may be used to describe different things:
   3. A **consolidated version** of the base act, as amended by one or more amending act. This is the base act, with all its "diffs" applied on it.
   4. The **"abstract" act**, that is the act as an intellectual work, independantly of one of its (consolidated) version. This is intuitively what we are using when writing a legal reference without specifying a version : _"Council Directive (EC) 93/104 concerning certain aspects of the organisation of working time [1993] OJ   L307/18 (Working  Time  Directive)"_.
   5. An **article or another subdivision** of the base act, or one of its subsequent consolidated version.
-The rest of this guide tries to propose an approach to describe and relate these conceptually different entities, using for each of them a subset of all the available properties to describe a legislation.
+  
+### Base act, amending acts, consolidated versions, abstract act
+
+The relation between the base act, its amending act, the resulting consolidated versions, and the abstract act is shown in the diagram below:
+
+![Relation between base act, amending act, consolidated versions and abstract act](/images/structure-conso-abstract.png)
+
+This is the sequence of events that this diagram depicts :
+
+1. A base act is published in an Official Journal.
+2. Immediately, a first consolidated version of the act is produced (Consolidated act V0).
+3. A first amending act is published in the OJ.
+4. The base act and the first amending act are consolidated in Consolidated act V1
+5. A second amending act is published in the OJ.
+6. The base act, the first and second amending acts are consolidated in Consolidated act V2.
+
+
+There are a few important things to note:
+
+- Even though the textual content of the Consolidated version V0 is identical to the base act, it is really considered as another document, hence another entity. It is usually not published by the same system, does not have the same legal value as the base act, is not under the same responsibilities, may differ in its cover page or number, etc. For all these reasons, it is something different.
+  - The abstract act encompasses the successive consolidated versions of the act, but not the base act itself. The base act "gives birth to" the consolidated versions, but is not considered a version in itself; instead the consolidated version v0 represents the first version of the act.
+  - As they are not versionned strictly speaking, the base act and the amending act do not have their "abstract" level, like the consolidated versions have.
+
