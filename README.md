@@ -75,14 +75,14 @@ This diagram gives a good overview of which properties are interesting/necessary
 
 The rest of this guide captures the good practices in terms of data modeling for the description of legal acts and how to apply them in the context of the schema.org Legislation extension.
 
-In a sense it gives an _application profile_ of schema.org for the description of legislation.
+In a sense it gives an _application profile_ of schema.org for the description of legislation. It is certainly not the only and definitive solution for the description of legislation, alternative solutions are of course possible.
 
 
 ## Good practices for the description of Legislation in schema.org
 
 ### What does the Legislation type means ?
 
-The `Legislation` type in schema.org may be used to describe different things:
+The [`schema:Legislation`](http://schema.org/Legislation) type in schema.org may be used to describe different things:
 
   1. A **base act** published in an official journal. This is the "birth" of a legal act.
   2. An **amending act**, also published in an official journal, amending the base act. This is expressed like a "diff" applied on the base act ("In the base act, point 2 of article 3 is replaced by the following : ....")
@@ -110,11 +110,14 @@ There are a few important things to note:
 
 - Even though the textual content of the Consolidated version V0 is identical to the base act, it is really considered as another document, hence another entity. It is usually not published by the same system, does not have the same legal value as the base act, is not under the same responsibilities, may differ in its cover page or number, is not presented in the same web page, etc. For all these reasons, it is something different.
 - The abstract act encompasses the successive consolidated versions of the act, but not the base act itself. The base act "gives birth to" the consolidated versions, but is not considered a version in itself; instead the consolidated version v0 represents the first version of the act.
-- As they are not versionned strictly speaking, the base act and the amending act do not have their "abstract" level, like the consolidated versions have.
+- As they are not versionned strictly speaking, the base act and the amending acts do not have their "abstract" level, like the consolidated versions have.
 
 The relationships between these entities is as follow:
 
 1. The abstract act refers to its successive versions using the [`schema:workExample`](http://schema.org/workExample) property. (in the web pages of each consolidated version, only one of these links will be present, not all).
-1. Each consolidated version of the act points to the base act and all the amending acts being consolidated in this version using the [`schema:legislationConsolidates`](http://schema.org/legislationConsolidates) property.
-2. The abstract act points to the base act that it derives from using the [`schema:isBasedOn`](http://schema.org/isBasedOn) property.
+2. Each consolidated version of the act points to the base act and all the amending acts being consolidated in this version using the [`schema:legislationConsolidates`](http://schema.org/legislationConsolidates) property.
+3. The abstract act points to the base act that it derives from using the [`schema:isBasedOn`](http://schema.org/isBasedOn) property.
+
+
+
 
