@@ -108,7 +108,13 @@ This is the sequence of events that this diagram depicts :
 
 There are a few important things to note:
 
-- Even though the textual content of the Consolidated version V0 is identical to the base act, it is really considered as another document, hence another entity. It is usually not published by the same system, does not have the same legal value as the base act, is not under the same responsibilities, may differ in its cover page or number, etc. For all these reasons, it is something different.
-  - The abstract act encompasses the successive consolidated versions of the act, but not the base act itself. The base act "gives birth to" the consolidated versions, but is not considered a version in itself; instead the consolidated version v0 represents the first version of the act.
-  - As they are not versionned strictly speaking, the base act and the amending act do not have their "abstract" level, like the consolidated versions have.
+- Even though the textual content of the Consolidated version V0 is identical to the base act, it is really considered as another document, hence another entity. It is usually not published by the same system, does not have the same legal value as the base act, is not under the same responsibilities, may differ in its cover page or number, is not presented in the same web page, etc. For all these reasons, it is something different.
+- The abstract act encompasses the successive consolidated versions of the act, but not the base act itself. The base act "gives birth to" the consolidated versions, but is not considered a version in itself; instead the consolidated version v0 represents the first version of the act.
+- As they are not versionned strictly speaking, the base act and the amending act do not have their "abstract" level, like the consolidated versions have.
+
+The relationships between these entities is as follow:
+
+1. The abstract act refers to its successive versions using the [`schema:workExample`](http://schema.org/workExample) property. (in the web pages of each consolidated version, only one of these links will be present, not all).
+1. Each consolidated version of the act points to the base act and all the amending acts being consolidated in this version using the [`schema:legislationConsolidates`](http://schema.org/legislationConsolidates) property.
+2. The abstract act points to the base act that it derives from using the [`schema:isBasedOn`](http://schema.org/isBasedOn) property.
 
