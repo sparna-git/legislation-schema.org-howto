@@ -1,0 +1,50 @@
+@startuml
+
+	package "Official Journal Publications" <<Cloud>> {
+		class "Base Act" {
+		}
+		class "Modifying Act 1" {
+		}
+		class "Modifying Act 2" {
+		}
+		"Base Act" -[hidden]> "Modifying Act 1"
+		"Modifying Act 1" -[hidden]> "Modifying Act 2"
+	}
+
+	package "Consolidated Legislation" <<Cloud>> {
+	class "Abstract Act" {
+	}
+	"Abstract Act" --> "Consolidated Act V1" : workExample
+	"Abstract Act" --> "Consolidated Act V2" : workExample
+	"Abstract Act" --> "Consolidated Act V0" : workExample
+	"Abstract Act" --> "Base Act" : isBasedOn
+
+	together {
+		class "Consolidated Act V0" {
+		}
+	}
+	"Consolidated Act V0" --> "Base Act" : legislationConsolidates
+
+	together {
+		class "Consolidated Act V1" {
+		}
+	}
+	"Consolidated Act V1" --> "Base Act" : legislationConsolidates
+	"Consolidated Act V1" --> "Modifying Act 1" : legislationConsolidates
+
+	together {
+		class "Consolidated Act V2" {
+		}
+	}
+	"Consolidated Act V2" --> "Base Act" : legislationConsolidates
+	"Consolidated Act V2" --> "Modifying Act 1" : legislationConsolidates
+	"Consolidated Act V2" --> "Modifying Act 2" : legislationConsolidates
+
+	"Consolidated Act V0" -[hidden]> "Consolidated Act V1"
+	"Consolidated Act V1" -[hidden]> "Consolidated Act V2"
+	
+	}
+
+hide circle
+hide empty members
+@enduml
