@@ -66,3 +66,13 @@ The ELI ontology guides for publishing legislation metadata using ELI may also p
 The necessary attributes to describe legislation in schema.org are summarized in this diagram, showing how the description of legislation is mixing generic attributes available on the class [CreativeWork](http://schema.org/CreativeWork), and specific attributes proposed for the specific description of Legislation :
 
 ![Legislation schema.org diagram](/images/legislation-schemaorg-diagram.png)
+
+This diagram gives a good overview of which properties are interesting/necessary for the description of legal acts, however it is not sufficient. The `Legislation` type in schema.org may be used to describe different things:
+
+  1. An act published in an official journal, a "base act". This is the "birth" of a legal act.
+  2. An amending act, also published in an official journal, amending the base act. This is expressed like a "diff" applied on the base act ("In the base act, point 2 of article 3 is replaced by the following : ....")
+  3. A consolidated version of the base act, as amended by one or more amending act. This is the base act, with all its "diffs" applied on it.
+  4. The "abstract" act, that is the act as an intellectual work, independantly of one of its (consolidated) version. This is intuitively what we are using when writing a legal reference without specifying a version : _"Council Directive (EC) 93/104 concerning certain aspects of the organisation of working time [1993] OJ   L307/18 (Working  Time  Directive)"_.
+  5. An article or another subdivision of the base act, or one of its subsequent consolidated version.
+
+The rest of this guide tries to propose an approach to describe and relate these conceptually different entities, using for each of them a subset of all the available properties to describe a legislation.
