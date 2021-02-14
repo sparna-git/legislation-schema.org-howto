@@ -1,0 +1,68 @@
+@startuml
+
+	package "Official Journal Publications" <<Cloud>> {
+		class "Base Act" {}
+		class "Modifying Act 1" {}
+		class "Modifying Act 2" {}
+		"Base Act" -[hidden]> "Modifying Act 1"
+		"Modifying Act 1" -[hidden]> "Modifying Act 2"
+
+		class "Modifying Act 1, Article 1" {}
+		class "Modifying Act 2, Article 1" {}
+
+		"Modifying Act 1" --> "Modifying Act 1, Article 1" : hasPart
+		"Modifying Act 2" --> "Modifying Act 2, Article 1" : hasPart
+
+		class "Base Act, Article 1" {}
+		class "Base Act, Article 2" {}
+
+		"Base Act" --> "Base Act, Article 1" : hasPart
+		"Base Act" --> "Base Act, Article 2" : hasPart
+	}
+
+	package "Consolidated Legislation" <<Cloud>> {
+
+	class "Abstract Consolidated Act" {
+	}
+	"Abstract Consolidated Act" --> "Consolidated Act V1" : workExample
+	"Abstract Consolidated Act" --> "Consolidated Act V2" : workExample
+	"Abstract Consolidated Act" --> "Consolidated Act V0" : workExample
+
+	together {
+		class "Consolidated Act V0" {
+		}
+		class "Act V0, Article 1" {}
+		class "Act V0, Article 2" {}
+	}
+
+	"Consolidated Act V0" --> "Act V0, Article 1" : hasPart
+	"Consolidated Act V0" --> "Act V0, Article 2" : hasPart
+	"Modifying Act 1, Article 1" --> "Act V0, Article 1" : legislationAmends
+
+	together {
+		class "Consolidated Act V1" {
+		}
+		class "Act V1, Article 1" {}
+		class "Act V1, Article 2" {}
+	}
+
+	"Consolidated Act V1" --> "Act V1, Article 1" : hasPart
+	"Consolidated Act V1" --> "Act V1, Article 2" : hasPart
+	"Modifying Act 2, Article 1" --> "Act V1, Article 2" : legislationRepeals
+
+	together {
+		class "Consolidated Act V2" {
+		}
+		class "Act V2, Article 1" {}
+	}
+	"Consolidated Act V2" --> "Modifying Act 2" : legislationConsolidates
+	"Consolidated Act V2" --> "Act V2, Article 1" : hasPart
+
+	"Consolidated Act V0" -[hidden]> "Consolidated Act V1"
+	"Consolidated Act V1" -[hidden]> "Consolidated Act V2"
+
+	}
+
+hide circle
+hide empty members
+@enduml
