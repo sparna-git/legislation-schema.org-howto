@@ -1,3 +1,7 @@
+---
+title: Describing Legislation in schema.org
+---
+
   - _last updated_ : 2021-02-11
   - _author_ : Thomas Francart (thomas [dot] francart [at] sparna [dot] fr) 
   - status : **/!\ This is work in progress**
