@@ -140,7 +140,6 @@ The relationships between these entities is as follow:
 - [`schema:citation`](http://schema.org/citation)
 - [`schema:isBasedOn`](http://schema.org/isBasedOn)
 
-
 These links:
 - are stated **on the acts published in the Official Journal** (base act or modifying act), because it is these acts that have legal value (usually).
 - point to a specific consolidated version of the act being changed/corrects/cited/taken as basis, so that we know which precise version of the act the links points to.
@@ -169,18 +168,37 @@ This is the content depicted in this diagram:
 The base act and the abstract consolidated act can be described with the same properties in schema.org, except:
 - only the abstract consolidated act have [`schema:workExample`](http://schema.org/workExample) to point to its versions.
 - only the abstract consolidated act have [`schema:isBasedOn`](http://schema.org/isBasedOn) to state it is derived from the base act.
-- the abstract consolidated act cannot be divided in subdivisions, so cannot have [`schema:isBasedOn`](http://schema.org/isPartOf)
+- the abstract consolidated act cannot be divided in subdivisions, so cannot have [`schema:isBasedOn`](http://schema.org/isPartOf).
+- the abstract consolidated act is abstract and cannot have actual content referred to by [`schema:encoding`](http://schema.org/encoding).
+- the abstract consolidated act can have [`schema:legislationDateVersion`](http://schema.org/legislationDateVersion) to indicate that the metadata are valid at a certain date.
 
-
-### Describing the abstract consolidated act
+### Describing the abstract act
 
 The abstract act is the one that we intuitively refer to when talking about the legislation without specifying which version we are referring to. The following properties are available to describe the abstract act:
 
-| Property | Note |
-| ---------| ---- |
-| about | |
-| alternateName | |
-
+| Status | Property | Note |
+| ------ | ---------| ---- |
+| mandatory | name | 1..n |
+| mandatory | isBasedOn | 1..n |
+| recommended | legislationIdentifier | |
+| recommended | legislationType | |
+| recommended | legislationDate | |
+|   | about | |
+|   | alternateName | |
+|   | datePublished | |
+|   | inLanguage | |
+|   | description | |
+|   | temporalCoverage | |
+|   | spatialCoverage | |
+|   | isPartOf | |
+|   | workExample | |
+|   | publisher | |
+|   | legislationPassedBy | |
+|   | legislationResponsible | |
+|   | legislationCountersignedBy | |
+|   | legislationDateVersion | |
+|   | legislationLegalForce | |
+|   | legislationDateOfApplicability | |
 
 
 ### Special relations to EU directives or regulations (or other higher-level legal corpus)
@@ -190,3 +208,5 @@ In addition to the legal analysis relationships described above that refer to ac
 - [`schema:legislationApplies`](http://schema.org/legislationApplies) is a generic link to state that an act somehow transfers another act into another legislative context; this link has subproperties:
   - [`schema:legislationTransposes`](http://schema.org/legislationTransposes); this link is highly specific to EU directive transposition, and has a precise, legally-binding, meaning;
   - [`schema:legislationEnsuresImplementationOf`](http://schema.org/legislationEnsuresImplementationOf); to be used for EU regulations that are not transposed, or to state that an act makes sure there is no conflict for another act to apply;
+  - [`schema:sameAs`](http://schema.org/sameAs)
+
