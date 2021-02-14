@@ -8,7 +8,7 @@
 {:toc}
 
 
-## Legislation on the web, and schema.org
+## Legislation on the web, schema.org, and ELI
 
 
 ### Welcome
@@ -67,7 +67,12 @@ Interested readers can find more information on the community discussions that h
 The ELI ontology guides for publishing legislation metadata using ELI may also provide useful background information, although not targeted at schema.org :
   - [ELI methodological guide](https://op.europa.eu/en/publication-detail/-/publication/514875b4-5efd-11e8-ab9c-01aa75ed71a1)
   - [ELI technological guide](https://op.europa.eu/en/publication-detail/-/publication/8159b75d-5efc-11e8-ab9c-01aa75ed71a1)
-  
+
+#### ELI to schema.org converter
+
+The Office of Publications of the EU has provided a [conversion tool to generate schema.org markup from ELI metadata](https://webgate.ec.europa.eu/eli-validator/eli2sdo).
+
+
 ### Overview of the schema.org metadata available to describe Legislation (and why this is insufficient)
 
 The necessary attributes to describe legislation in schema.org are summarized in this diagram, showing how the description of legislation is mixing generic attributes available on the class [CreativeWork](http://schema.org/CreativeWork), and specific attributes proposed for the specific description of Legislation :
