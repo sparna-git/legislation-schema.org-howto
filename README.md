@@ -5,6 +5,11 @@
   - _author_ : Thomas Francart (thomas [dot] francart [at] sparna [dot] fr) 
   - status : **/!\ This is work in progress**
 
+
+* TOC
+{:toc}
+
+
 ### Welcome
 
 This guide is intended for data publisher that wish to disseminate structured metadata about legislation on the web using [schema.org Legislation extension](http://schema.org/Legislation). This is especially targeted at stakeholders of the [European Legislation Identifier](https://eur-lex.europa.eu/eli-register/about.html) initiative, that are already engaged in the dissemination of structured metadata using the [ELI ontology](https://op.europa.eu/en/web/eu-vocabularies/model/-/resource/dataset/eli). This is also useful for:
