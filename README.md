@@ -128,6 +128,22 @@ The relationships between these entities is as follow:
 2. Each consolidated version of the act points to the base act and all the amending acts being consolidated in this version using the [`schema:legislationConsolidates`](http://schema.org/legislationConsolidates) property.
 3. The abstract act points to the base act that it derives from using the [`schema:isBasedOn`](http://schema.org/isBasedOn) property.
 
+### Legal analysis links
 
+[`schema:Legislation`](http://schema.org/Legislation) specifies a certain number of links between Legislation entities that pertain to _legal analysis_, that is to the analysis of the actual content of the legal act and how it relates to other acts. These links are (click to get the definition on schema.org website):
 
+- [`schema:legislationChanges`](http://schema.org/legislationChanges) and its subproperties
+  - [`schema:legislationAmends`](http://schema.org/legislationAmends)
+  - [`schema:legislationRepeals`](http://schema.org/legislationRepeals)
+  - [`schema:legislationCommences`](http://schema.org/legislationCommences)
+- [`schema:legislationCorrects`](http://schema.org/legislationCorrects)
+- [`schema:citation`](http://schema.org/citation)
+- [`schema:isBasedOn`](http://schema.org/isBasedOn)
 
+### Special relations to EU directives or regulations (or other higher-level legal corpus)
+
+In addition to the relationships described above that refer to acts in the same legal corpus, other links are provided to refer to acts of another legal corpus, typically to refer to EU directives or regulations that are transposed or implemented by EU Member States. This also covers Non-EU cases of local regulation applying a national legislation. The relations are:
+
+- [`schema:legislationApplies`](http://schema.org/legislationApplies) is a generic link to state that an act somehow transfers another act into another legislative context; this link has subproperties:
+  - [`schema:legislationTransposes`](http://schema.org/legislationTransposes); this link is highly specific to EU directive transposition, and has a precise, legally-binding, meaning;
+  - [`schema:legislationEnsuresImplementationOf`](http://schema.org/legislationEnsuresImplementationOf); to be used for EU regulations that are not transposed, or to state that an act makes sure there is no conflict for another act to apply;
