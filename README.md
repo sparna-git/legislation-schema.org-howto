@@ -176,29 +176,29 @@ The base act and the abstract consolidated act can be described with the same pr
 
 The abstract act is the one that we intuitively refer to when talking about the legislation without specifying which version we are referring to. The following properties are available to describe the abstract act:
 
-| Status | Property | Note |
-| ------ | ---------| ---- |
-| mandatory | name | 1..n |
-| mandatory | isBasedOn | 1..n |
-| recommended | legislationIdentifier | |
-| recommended | legislationType | |
-| recommended | legislationDate | |
-|   | about | |
-|   | alternateName | |
-|   | datePublished | |
-|   | inLanguage | |
-|   | description | |
-|   | temporalCoverage | |
-|   | spatialCoverage | |
-|   | isPartOf | |
-|   | workExample | |
-|   | publisher | |
-|   | legislationPassedBy | |
-|   | legislationResponsible | |
-|   | legislationCountersignedBy | |
-|   | legislationDateVersion | |
-|   | legislationLegalForce | |
-|   | legislationDateOfApplicability | |
+| Status | Property | Cardinality |
+| ------ | ---------| ----------- |
+| **mandatory** | name | 1..n |
+| **recommended** | isBasedOn | 0..1 |
+| rec.  | legislationIdentifier | 0..1 |
+| rec.  | legislationType | 0..1 |
+| rec.  | legislationDate | 0..1 |
+| rec.  | datePublished | 0..1 |
+| rec.  | legislationDateVersion | 0..1 |
+| rec.  | legislationLegalForce | 0..1 |
+| rec.  | workExample | 0..n |
+| **optional**  | about | 0..n |
+| opt.  | alternateName | 0..n |
+| opt.  | inLanguage | 0..n |
+| opt.  | description | 0..n |
+| opt.  | temporalCoverage | 0..1 |
+| opt.  | spatialCoverage | 0..n |
+| opt.  | isPartOf | 0..1 |
+| opt.  | publisher | 0..1 |
+| opt.  | legislationPassedBy | 0..1 |
+| opt.  | legislationResponsible | 0..1 |
+| opt.  | legislationCountersignedBy | 0..n |
+| opt.  | legislationDateOfApplicability | 0..1 |
 
 
 ### Special relations to EU directives or regulations (or other higher-level legal corpus)
