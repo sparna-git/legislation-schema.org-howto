@@ -7,11 +7,9 @@
 * TOC
 {:toc}
 
+---
 
-## Legislation on the web, schema.org, and ELI
-
-
-### Welcome
+## Welcome
 
 This guide is intended for data publisher that wish to disseminate structured metadata about legislation on the web using **[schema.org Legislation extension](http://schema.org/Legislation)**. This is especially targeted at stakeholders of the [European Legislation Identifier](https://eur-lex.europa.eu/eli-register/about.html) initiative, that are already engaged in the dissemination of structured metadata using the [ELI ontology](https://op.europa.eu/en/web/eu-vocabularies/model/-/resource/dataset/eli). This is also useful for:
   
@@ -22,6 +20,7 @@ This guide is intended for data publisher that wish to disseminate structured me
 
 This guide assumes that the reader is comfortable with what schema.org is, and how to decode the [JSON-LD](https://json-ld.org/) syntax, since exemples are given in this syntax.
 
+## Legislation on the web, schema.org, and ELI
 
 ### Why describe Legislation using schema.org ?
 
