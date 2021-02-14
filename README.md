@@ -172,7 +172,9 @@ The base act and the abstract consolidated act can be described with the same pr
 - the abstract consolidated act is abstract and cannot have actual content referred to by [`schema:encoding`](http://schema.org/encoding).
 - the abstract consolidated act can have [`schema:legislationDateVersion`](http://schema.org/legislationDateVersion) to indicate that the metadata are valid at a certain date.
 
-### Describing the abstract act
+### Description of an abstract act
+
+#### Properties
 
 The abstract act is the one that we intuitively refer to when talking about the legislation without specifying which version we are referring to.
 
@@ -202,6 +204,46 @@ The following properties are available to describe the abstract act:
 | opt.  | legislationDateOfApplicability | 0..1 |
 | opt.  | datePublished | 0..1 |
 
+#### Example
+
+```json
+```
+
+### Description of an act version
+
+#### Properties
+
+#### Example
+
+```json
+```
+
+### Description of a base act
+
+#### Properties
+
+#### Example
+
+```json
+```
+
+### Description of a legislation file
+
+#### Properties
+
+#### Example
+
+```json
+```
+
+### Description of an article (or other subdivision)
+
+#### Properties
+
+#### Example
+
+```json
+```
 
 ### Special relations to EU directives or regulations (or other higher-level legal corpus)
 
