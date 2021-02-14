@@ -194,7 +194,7 @@ The following properties are available to describe the abstract act:
 | **optional**  | about | 0..n |
 | opt.  | alternateName | 0..n |
 | opt.  | description | 0..n |
-| opt.  | temporalCoverage | 0..1 |
+| opt.  | temporalCoverage | 0..1 | Use `xxxx-xx-xx/..` format when end date of the range is unknown |
 | opt.  | spatialCoverage | 0..n |
 | opt.  | isPartOf | 0..1 | In the context of the description of an act, this refers to the [`schema:PublicationIssue`](http://schema.org/PublicationIssue) identifying the Official Journal issue in which the act was officially published. |
 | opt.  | publisher | 0..1 |
@@ -207,6 +207,52 @@ The following properties are available to describe the abstract act:
 #### Example
 
 ```json
+{
+	/*
+		URI of the consolidation for this act
+	*/
+	"@id" : "http://country.xyz/eli/decree/1234-56/consolidated", 
+	"@type" : "Legislation",
+	
+	/*
+		Titles of the act, potentially multilingual.
+		Same as on base act
+	*/
+	"name" : [
+		{ "@value" : "Decree of the XXXX-XX-XX regarding...", "@language" : "en" }
+		{ "@value" : "Décret du ... portant sur ...", "@language" : "fr" }
+	],
+	"legislationIdentifier" : "1234-56",
+	"legislationType" : "Decree",
+	/*
+		All the languages of the act, using language codes
+	*/
+	"inLanguage" : ["fr", "en"],
+	/*
+	 	date of signature/enactement of the base act,
+		corresponding to eli:date_document
+	 */
+	"legislationDate" : "2019-09-22",
+	/*
+		In Force status of the act. Can vary over time
+	*/
+	"legislationLegalForce" : "InForce",
+	/*
+		In force validity range of the act.
+		Equivalent to eli:first_date_entry_into_force / eli:date_no_longer_in_force.
+		Use ".." notation when end is unknown
+	*/
+	"temporalCoverage" : "2019-09-22/..",
+	/*
+		The date at which these metadata were generated, indicating that the
+		'legislationLegalForce' and 'temporalCoverage' were valid at this point in time.
+	*/
+	"legislationDateVersion" : "2021-01-28",
+	/*
+		Link to the basic act being consolidated
+	*/
+	"isBasedOn" : "http://country.xyz/eli/decree/1234-56",
+}
 ```
 
 ### Description of an act version
