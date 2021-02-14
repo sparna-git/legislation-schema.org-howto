@@ -164,6 +164,24 @@ This is the content depicted in this diagram:
 5. Modifying act 1 and 2 are consolidated by Consolidated Act V2, that contains only 1 article (because article 2 was repealed).
 
 
+### Describing a base act or an abstract consolidated act
+
+The base act and the abstract consolidated act can be described with the same properties in schema.org, except:
+- only the abstract consolidated act have [`schema:workExample`](http://schema.org/workExample) to point to its versions.
+- only the abstract consolidated act have [`schema:isBasedOn`](http://schema.org/isBasedOn) to state it is derived from the base act.
+- the abstract consolidated act cannot be divided in subdivisions, so cannot have [`schema:isBasedOn`](http://schema.org/isPartOf)
+
+
+### Describing the abstract consolidated act
+
+The abstract act is the one that we intuitively refer to when talking about the legislation without specifying which version we are referring to. The following properties are available to describe the abstract act:
+
+| Property | Note |
+| ---------| ---- |
+| about | |
+| alternateName | |
+
+
 
 ### Special relations to EU directives or regulations (or other higher-level legal corpus)
 
