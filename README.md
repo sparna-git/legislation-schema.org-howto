@@ -174,31 +174,33 @@ The base act and the abstract consolidated act can be described with the same pr
 
 ### Describing the abstract act
 
-The abstract act is the one that we intuitively refer to when talking about the legislation without specifying which version we are referring to. The following properties are available to describe the abstract act:
+The abstract act is the one that we intuitively refer to when talking about the legislation without specifying which version we are referring to.
 
-| Status | Property | Cardinality |
-| ------ | ---------| ----------- |
-| **mandatory** | name | 1..n |
+The following properties are available to describe the abstract act:
+
+| Status | Property | Cardinality | Note |
+| ------ | ---------| ----------- | ---- |
+| **mandatory** | name | 1..n | The title needs to be expressed with a language tag. An act may have more than one title, in case it is multilingual.
 | **recommended** | isBasedOn | 0..1 |
 | rec.  | legislationIdentifier | 0..1 |
 | rec.  | legislationType | 0..1 |
 | rec.  | legislationDate | 0..1 |
-| rec.  | datePublished | 0..1 |
 | rec.  | legislationDateVersion | 0..1 |
 | rec.  | legislationLegalForce | 0..1 |
 | rec.  | workExample | 0..n |
+| rec.  | inLanguage | 0..n |
 | **optional**  | about | 0..n |
 | opt.  | alternateName | 0..n |
-| opt.  | inLanguage | 0..n |
 | opt.  | description | 0..n |
 | opt.  | temporalCoverage | 0..1 |
 | opt.  | spatialCoverage | 0..n |
-| opt.  | isPartOf | 0..1 |
+| opt.  | isPartOf | 0..1 | In the context of the description of an act, this refers to the [`schema:PublicationIssue`](http://schema.org/PublicationIssue) identifying the Official Journal issue in which the act was officially published. |
 | opt.  | publisher | 0..1 |
 | opt.  | legislationPassedBy | 0..1 |
 | opt.  | legislationResponsible | 0..1 |
 | opt.  | legislationCountersignedBy | 0..n |
 | opt.  | legislationDateOfApplicability | 0..1 |
+| opt.  | datePublished | 0..1 |
 
 
 ### Special relations to EU directives or regulations (or other higher-level legal corpus)
