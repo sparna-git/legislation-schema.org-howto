@@ -130,7 +130,7 @@ The relationships between these entities is as follow:
 
 ### Legal analysis links
 
-[`schema:Legislation`](http://schema.org/Legislation) specifies a certain number of links between Legislation entities that pertain to _legal analysis_, that is to the analysis of the actual content of the legal act and how it relates to other acts. These links are (click to get the definition on schema.org website):
+[`schema:Legislation`](http://schema.org/Legislation) specifies a certain number of links between Legislation entities that pertain to _legal analysis_, that is to the analysis of the actual content of the legal act (vs. identification properties) and how it relates to other acts. These links are (click to get the definition on schema.org website):
 
 - [`schema:legislationChanges`](http://schema.org/legislationChanges) and its subproperties
   - [`schema:legislationAmends`](http://schema.org/legislationAmends)
@@ -140,9 +140,34 @@ The relationships between these entities is as follow:
 - [`schema:citation`](http://schema.org/citation)
 - [`schema:isBasedOn`](http://schema.org/isBasedOn)
 
+
+These links:
+- are stated **on the acts published in the Official Journal** (base act or modifying act), because it is these acts that have legal value (usually).
+- point to a specific consolidated version of the act being changed/corrects/cited/taken as basis, so that we know which precise version of the act the links points to.
+- can be expressed as inverse links (JSON-LD `@reverse`) on the consolidated versions so that the data is available when browsing that version of the act.
+- can point to specific article or subdivision of a consolidated version.
+
+### Articles and Subdivisions
+
+Articles and other subdivisions are also typed as [`schema:Legislation`](http://schema.org/Legislation). The whole act points to its subdivision using [`schema:hasPart`](http://schema.org/hasPart).
+
+The combination of _legal analysis_ links and subdivisions is depicted in the below diagram:
+
+
+![Legal Analysis links and subdivisions](/images/structure-legal-analysis.png)
+
+This is the content depicted in this diagram:
+1. The initial base act has 2 articles, article 1 and article 2. Hence the Consolidated Version V0 has the same structure.
+2. Modifying act 1, through its article 1, amends the article 1 of the initial act, hence the `legislationAmends` link points to the article 1 of the Consolidated Version V0, because it is the actual article being amended.
+3. Modifying act 1 is consolidated by the Consolidated Act V1 (link not shown for readability).
+4. Modifying act 2, through its article 1, repeals (cancels) the article 2 of the initial act, hence the `legislationRepeals` link points to the article 1 of the Consolidated Version V1.
+5. Modifying act 1 and 2 are consolidated by Consolidated Act V2, that contains only 1 article (because article 2 was repealed).
+
+
+
 ### Special relations to EU directives or regulations (or other higher-level legal corpus)
 
-In addition to the relationships described above that refer to acts in the same legal corpus, other links are provided to refer to acts of another legal corpus, typically to refer to EU directives or regulations that are transposed or implemented by EU Member States. This also covers Non-EU cases of local regulation applying a national legislation. The relations are:
+In addition to the legal analysis relationships described above that refer to acts in the same legal corpus, other links are provided to refer to acts of another legal corpus, typically to refer to EU directives or regulations that are transposed or implemented by EU Member States. This also covers Non-EU cases of local regulation applying a national legislation. The relations are:
 
 - [`schema:legislationApplies`](http://schema.org/legislationApplies) is a generic link to state that an act somehow transfers another act into another legislative context; this link has subproperties:
   - [`schema:legislationTransposes`](http://schema.org/legislationTransposes); this link is highly specific to EU directive transposition, and has a precise, legally-binding, meaning;
