@@ -163,6 +163,16 @@ This is the content depicted in this diagram:
 5. Modifying act 1 and 2 are consolidated by Consolidated Act V2, that contains only 1 article (because article 2 was repealed).
 
 
+### Special relations to EU directives or regulations (or other higher-level legal corpus)
+
+In addition to the legal analysis relationships described above that refer to acts in the same legal corpus, other links are provided to refer to acts of another legal corpus, typically to refer to EU directives or regulations that are transposed or implemented by EU Member States. This also covers Non-EU cases of local regulation applying a national legislation. The relations are:
+
+- [`schema:legislationApplies`](http://schema.org/legislationApplies) is a generic link to state that an act somehow transfers another act into another legislative context; this link has subproperties:
+  - [`schema:legislationTransposes`](http://schema.org/legislationTransposes); this link is highly specific to EU directive transposition, and has a precise, legally-binding, meaning;
+  - [`schema:legislationEnsuresImplementationOf`](http://schema.org/legislationEnsuresImplementationOf); to be used for EU regulations that are not transposed, or to state that an act makes sure there is no conflict for another act to apply;
+  - [`schema:sameAs`](http://schema.org/sameAs)
+
+
 ## Legislation in schema.org Application Profile
 
 ### Abstract act
@@ -182,31 +192,32 @@ The Abstract act will usually be used within the markup for a specific version o
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
+| inLanguage | xsd:string | 0..n | Use 2-letters language codes. Repeat if act is multilingual |
 | isBasedOn | Legislation (Base Act) | 1..n | Refers to the URI of the Base Act  |
 | legislationIdentifier | xsd:string | 0..1 | |
-| legislationType | xsd:string | 0..1 | |
 | legislationDate | xsd:date | 0..1 | |
 | legislationDateVersion | xsd:date | 0..1 | |
 | legislationLegalForce | LegalForceStatus | 0..1 | Can be InForce, NotInForce, PartiallyInForce |
+| legislationType | xsd:string | 0..1 | |
 | workExample | Legislation (representing a specific version of the act) | 0..n | |
-| inLanguage | xsd:string | 0..n | Use 2-letters language codes. Repeat if act is multilingual |
 
-#### Optionnal properties for Abstract act
+
+#### Optional properties for Abstract act
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
 | about || 0..n ||
 | alternateName || 0..n ||
+| datePublished | |  0..1 ||
 | description || 0..n ||
-| temporalCoverage | | 0..1 ||
-| spatialCoverage | |  0..n ||
 | isPartOf | |  0..1 ||
-| publisher | |  0..n ||
-| legislationPassedBy | |  0..n ||
-| legislationResponsible | |  0..n ||
 | legislationCountersignedBy | |  0..n ||
 | legislationDateOfApplicability | |  0..1 ||
-| datePublished | |  0..1 ||
+| legislationPassedBy | |  0..n ||
+| legislationResponsible | |  0..n ||
+| publisher | |  0..n ||
+| spatialCoverage | |  0..n ||
+| temporalCoverage | | 0..1 ||
 
 #### Example
 
@@ -237,19 +248,27 @@ An Act version will never be described on its own, but it will always be include
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| xxxxx |  | 0..n ||
+| `@reverse` workExample | Legislation (Abstract Act) | 0..1 | An Act version must be described within the context of an Abstract Act (the `@reverse` notation indicate we are expecting the property on the abstract act pointing to the act version) |
+| encoding | LegislationObject | 1..n | |
 
 #### Recommended properties for Act version
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| xxxxx |  | 0..n ||
+| datePublished |  | 0..n ||
+| temporalCoverage |  | 0..n ||
+| legislationConsolidates |  | 0..n ||
+| `@reverse` all properties listed in the Legal analysis section. |  | 0..n ||
 
-#### Optionnal properties for Act version
+#### Optional properties for Act version
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| xxxxx |  | 0..n ||
+| hasPart |  | 0..n ||
+| publisher |  | 0..n ||
+| text |  | 0..n ||
+| version |  | 0..n ||
+
 
 #### Example
 
@@ -259,29 +278,48 @@ An Act version will never be described on its own, but it will always be include
 ### Base act
 
 The base act and the abstract consolidated act can be described with the same properties in schema.org, except:
-- only the abstract consolidated act have [`schema:workExample`](http://schema.org/workExample) to point to its versions.
-- only the abstract consolidated act have [`schema:isBasedOn`](http://schema.org/isBasedOn) to state it is derived from the base act.
-- the abstract consolidated act cannot be divided in subdivisions, so cannot have [`schema:isBasedOn`](http://schema.org/isPartOf).
-- the abstract consolidated act is abstract and cannot have actual content referred to by [`schema:encoding`](http://schema.org/encoding).
-- the abstract consolidated act can have [`schema:legislationDateVersion`](http://schema.org/legislationDateVersion) to indicate that the metadata are valid at a certain date.
+- only the abstract act have [`schema:workExample`](http://schema.org/workExample) to point to its versions.
+- only the abstract act have [`schema:isBasedOn`](http://schema.org/isBasedOn) to state it is derived from the base act.
+- the abstract act cannot be divided in subdivisions, so cannot have [`schema:isPartOf`](http://schema.org/isPartOf).
+- the abstract act is abstract and cannot have actual content referred to by [`schema:encoding`](http://schema.org/encoding).
+- the abstract act can have [`schema:legislationDateVersion`](http://schema.org/legislationDateVersion) to indicate that the metadata are valid at a certain date.
 
-#### Mandatory properties for Act version
-
-| Property | Range | Card. | Usage Note |
-| ---------| ----- | ----- | ---------- |
-| xxxxx |  | 0..n ||
-
-#### Recommended properties for Act version
+#### Mandatory properties for Base act
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| xxxxx |  | 0..n ||
+| name | rdf:langLiteral | 1..n | An act may have more than one title, in case it is multilingual.  |
+| encoding | LegislationObject | 1..n | |
 
-#### Optionnal properties for Act version
+#### Recommended properties for Base act
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| xxxxx |  | 0..n ||
+| inLanguage | xsd:string | 0..n | Use 2-letters language codes. Repeat if act is multilingual |
+| legislationIdentifier | xsd:string | 0..1 | |
+| legislationDate | xsd:date | 0..1 | |
+| legislationDateVersion | xsd:date | 0..1 | |
+| legislationLegalForce | LegalForceStatus | 0..1 | Can be InForce, NotInForce, PartiallyInForce |
+| legislationType | xsd:string | 0..1 | |
+
+#### Optional properties for Base act
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| about || 0..n ||
+| alternateName || 0..n ||
+| datePublished | |  0..1 ||
+| description || 0..n ||
+| hasPart | |  0..n ||
+| isPartOf | |  0..1 ||
+| legislationCountersignedBy | |  0..n ||
+| legislationDateOfApplicability | |  0..1 ||
+| legislationPassedBy | |  0..n ||
+| legislationResponsible | |  0..n ||
+| publisher | |  0..n ||
+| spatialCoverage | |  0..n ||
+| temporalCoverage | | 0..1 ||
+| `@reverse` all properties listed in the Legal analysis section. |  | 0..n ||
 
 #### Example
 
@@ -290,23 +328,28 @@ The base act and the abstract consolidated act can be described with the same pr
 
 ### Legislation file
 
-#### Mandatory properties for Act version
+#### Mandatory properties for Legislation file
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| xxxxx |  | 0..n ||
+| contentUrl | URL | 1..1 | |
+| encodingFormat | xsd:string | 1..1 | |
+| inLanguage | xsd:string | 1..n | |
+| `@reverse` encoding | Legislation (Base Act) or Legislation (Act Version) | 1..1 ||
 
-#### Recommended properties for Act version
-
-| Property | Range | Card. | Usage Note |
-| ---------| ----- | ----- | ---------- |
-| xxxxx |  | 0..n ||
-
-#### Optionnal properties for Act version
+#### Recommended properties for Legislation file
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| xxxxx |  | 0..n ||
+| legislationLegalValue |  | 0..1 ||
+
+#### Optional properties for Legislation file
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| copyrightHolder |  | 0..1 ||
+| license |  | 0..1 ||
+| publisher |  | 0..1 ||
 
 #### Example
 
@@ -330,7 +373,7 @@ The base act and the abstract consolidated act can be described with the same pr
 | ---------| ----- | ----- | ---------- |
 | xxxxx |  | 0..n ||
 
-#### Optionnal properties for Article (or other subdivision)
+#### Optional properties for Article (or other subdivision)
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
@@ -340,14 +383,4 @@ The base act and the abstract consolidated act can be described with the same pr
 
 ```json
 ```
-
-
-### Special relations to EU directives or regulations (or other higher-level legal corpus)
-
-In addition to the legal analysis relationships described above that refer to acts in the same legal corpus, other links are provided to refer to acts of another legal corpus, typically to refer to EU directives or regulations that are transposed or implemented by EU Member States. This also covers Non-EU cases of local regulation applying a national legislation. The relations are:
-
-- [`schema:legislationApplies`](http://schema.org/legislationApplies) is a generic link to state that an act somehow transfers another act into another legislative context; this link has subproperties:
-  - [`schema:legislationTransposes`](http://schema.org/legislationTransposes); this link is highly specific to EU directive transposition, and has a precise, legally-binding, meaning;
-  - [`schema:legislationEnsuresImplementationOf`](http://schema.org/legislationEnsuresImplementationOf); to be used for EU regulations that are not transposed, or to state that an act makes sure there is no conflict for another act to apply;
-  - [`schema:sameAs`](http://schema.org/sameAs)
 
