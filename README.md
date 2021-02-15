@@ -185,39 +185,39 @@ The Abstract act will usually be used within the markup for a specific version o
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| name | rdf:langLiteral | 1..n | An act may have more than one title, in case it is multilingual.  |
+| [`name`](http://schema.org/name) | rdf:langLiteral | 1..n | An act may have more than one title, in case it is multilingual.  |
 
 
 #### Recommended properties for Abstract act
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| inLanguage | xsd:string | 0..n | Use 2-letters language codes. Repeat if act is multilingual |
-| isBasedOn | Legislation (Base Act) | 1..n | Refers to the URI of the Base Act  |
-| legislationIdentifier | xsd:string | 0..1 | |
-| legislationDate | xsd:date | 0..1 | |
-| legislationDateVersion | xsd:date | 0..1 | |
-| legislationLegalForce | LegalForceStatus | 0..1 | Can be InForce, NotInForce, PartiallyInForce |
-| legislationType | xsd:string | 0..1 | |
-| workExample | Legislation (representing a specific version of the act) | 0..n | |
+| [`inLanguage`](http://schema.org/inLanguage) | xsd:string | 0..n | Use 2-letters language codes. Repeat if act is multilingual |
+| [`isBasedOn`](http://schema.org/isBasedOn) | [Legislation (Base Act)](#base-act) | 1..n | Refers to the URI of the Base Act  |
+| [`legislationIdentifier`](http://schema.org/legislationIdentifier) | xsd:string | 0..1 | |
+| [`legislationDate`](http://schema.org/legislationDate) | xsd:date | 0..1 | |
+| [`legislationDateVersion`](http://schema.org/legislationDateVersion) | xsd:date | 0..1 | |
+| [`legislationLegalForce`](http://schema.org/legislationLegalForce) | LegalForceStatus | 0..1 | Can be InForce, NotInForce, PartiallyInForce |
+| [`legislationType`](http://schema.org/legislationType) | xsd:string | 0..1 | |
+| [`workExample`](http://schema.org/workExample) | Legislation (representing a specific version of the act) | 0..n | |
 
 
 #### Optional properties for Abstract act
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| about || 0..n ||
-| alternateName || 0..n ||
-| datePublished | |  0..1 ||
-| description || 0..n ||
-| isPartOf | |  0..1 ||
-| legislationCountersignedBy | |  0..n ||
-| legislationDateOfApplicability | |  0..1 ||
-| legislationPassedBy | |  0..n ||
-| legislationResponsible | |  0..n ||
-| publisher | |  0..n ||
-| spatialCoverage | |  0..n ||
-| temporalCoverage | | 0..1 ||
+| [`about`](http://schema.org/about) || 0..n ||
+| [`alternateName`](http://schema.org/alternateName) || 0..n ||
+| [`datePublished`](http://schema.org/datePublished) | |  0..1 ||
+| [`description`](http://schema.org/description) || 0..n ||
+| [`isPartOf`](http://schema.org/isPartOf) | |  0..1 ||
+| [`legislationCountersignedBy`](http://schema.org/legislationCountersignedBy) | |  0..n ||
+| [`legislationDateOfApplicability`](http://schema.org/legislationDateOfApplicability) | |  0..1 ||
+| [`legislationPassedBy`](http://schema.org/legislationPassedBy) | |  0..n ||
+| [`legislationResponsible`](http://schema.org/legislationResponsible) | |  0..n ||
+| [`publisher`](http://schema.org/publisher) | |  0..n ||
+| [`spatialCoverage`](http://schema.org/spatialCoverage) | |  0..n ||
+| [`temporalCoverage`](http://schema.org/temporalCoverage) | | 0..1 ||
 
 #### Example
 
@@ -258,7 +258,7 @@ An Act version will never be described on its own, but it will always be include
 | datePublished |  | 0..n ||
 | temporalCoverage |  | 0..n ||
 | legislationConsolidates |  | 0..n ||
-| `@reverse` all [Legal analysis properties](#Legal-analysis-properties) |  | 0..n ||
+| `@reverse` all [Legal analysis properties](#legal-analysis-properties) |  | 0..n ||
 
 #### Optional properties for Act version
 
@@ -319,7 +319,7 @@ The base act and the abstract consolidated act can be described with the same pr
 | publisher | |  0..n ||
 | spatialCoverage | |  0..n ||
 | temporalCoverage | | 0..1 ||
-| `@reverse` all [Legal analysis properties](#Legal-analysis-properties). |  | 0..n ||
+| `@reverse` all [Legal analysis properties](#legal-analysis-properties). |  | 0..n ||
 
 #### Example
 
@@ -372,14 +372,17 @@ The base act and the abstract consolidated act can be described with the same pr
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| text |  xsd:string | 0..1 ||
 | hasPart |  Legislation (Article or another subdivision) | 0..n ||
+| legislationLegalForce | LegalForceStatus | 0..1 | Can be InForce, NotInForce, PartiallyInForce |
+| text |  xsd:string | 0..1 ||
 
 #### Optional properties for Article or other subdivision
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| all [Legal analysis properties](#Legal-analysis-properties) |  | 0..n ||
+| spatialCoverage | |  0..n ||
+| temporalCoverage | | 0..1 ||
+| all [Legal analysis properties](#legal-analysis-properties) |  | 0..n ||
 
 #### Example
 
@@ -399,3 +402,10 @@ These properties are common to different entities in the application profile :
 | legislationCorrects |  | 0..n ||
 | citation |  | 0..n ||
 | isBasedOn |  | 0..n ||
+
+### Semantic Pitfalls
+
+- isBasedOn
+- temporalCoverage
+- inLanguage
+- datePublished
