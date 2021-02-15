@@ -180,29 +180,42 @@ The abstract act is the one that we intuitively refer to when talking about the 
 
 The following properties are available to describe the abstract act:
 
-| Status | Property | Cardinality | Note |
-| ------ | ---------| ----------- | ---- |
-| **mandatory** | name | 1..n | The title needs to be expressed with a language tag. An act may have more than one title, in case it is multilingual.
-| **recommended** | isBasedOn | 0..1 | Link to the basic act published in the OJ |
-| rec.  | legislationIdentifier | 0..1 |
-| rec.  | legislationType | 0..1 |
-| rec.  | legislationDate | 0..1 | date of signature/enactement of the base act, corresponding to `eli:date_document` |
-| rec.  | legislationDateVersion | 0..1 | The date at which these metadata were generated, indicating that the 'legislationLegalForce' and 'temporalCoverage' were valid at this point in time. |
-| rec.  | legislationLegalForce | 0..1 | In Force status of the act. Can vary over time |
-| rec.  | workExample | 0..n |
-| rec.  | inLanguage | 0..n | All the languages of the act, using language codes |
-| **optional**  | about | 0..n |
-| opt.  | alternateName | 0..n |
-| opt.  | description | 0..n |
-| opt.  | temporalCoverage | 0..1 | In force validity range of the act. Equivalent to `eli:first_date_entry_into_force` / `eli:date_no_longer_in_force`. Use `xxxx-xx-xx/..` format when end date of the range is unknown |
-| opt.  | spatialCoverage | 0..n |
-| opt.  | isPartOf | 0..1 | In the context of the description of an act, this refers to the [`schema:PublicationIssue`](http://schema.org/PublicationIssue) identifying the Official Journal issue in which the act was officially published. |
-| opt.  | publisher | 0..1 |
-| opt.  | legislationPassedBy | 0..1 |
-| opt.  | legislationResponsible | 0..1 |
-| opt.  | legislationCountersignedBy | 0..n |
-| opt.  | legislationDateOfApplicability | 0..1 |
-| opt.  | datePublished | 0..1 |
+##### Mandatory properties for abstract act
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| name | rdf:langLiteral | 1..n | An act may have more than one title, in case it is multilingual.  |
+
+
+##### Recommended properties for abstract act
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| isBasedOn | rdf:langLiteral | 1..n | An act may have more than one title, in case it is multilingual.  |
+| legislationIdentifier | xsd:string | 0..1 | |
+| legislationType | xsd:string | 0..1 | |
+| legislationDate | xsd:date | 0..1 | |
+| legislationDateVersion | xsd:date | 0..1 | |
+| legislationLegalForce | LegalForceStatus | 0..1 | Can be InForce, NotInForce, PartiallyInForce |
+| workExample | Legislation (representing a specific version of the act) | 0..n | |
+| inLanguage | xsd:string | 0..n | Use 2-letters language codes. |
+
+##### Optionnal properties for abstract act
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| about || 0..n ||
+| alternateName || 0..n ||
+| description || 0..n ||
+| temporalCoverage | | 0..1 ||
+| spatialCoverage | |  0..n ||
+| isPartOf | |  0..1 ||
+| publisher | |  0..n ||
+| legislationPassedBy | |  0..n ||
+| legislationResponsible | |  0..n ||
+| legislationCountersignedBy | |  0..n ||
+| legislationDateOfApplicability | |  0..1 ||
+| datePublished | |  0..1 ||
 
 #### Example
 
