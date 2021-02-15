@@ -191,14 +191,14 @@ The following properties are available to describe the abstract act:
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| isBasedOn | rdf:langLiteral | 1..n | An act may have more than one title, in case it is multilingual.  |
+| isBasedOn | Legislation (Base Act) | 1..n | Refers to the URI of the Base Act  |
 | legislationIdentifier | xsd:string | 0..1 | |
 | legislationType | xsd:string | 0..1 | |
 | legislationDate | xsd:date | 0..1 | |
 | legislationDateVersion | xsd:date | 0..1 | |
 | legislationLegalForce | LegalForceStatus | 0..1 | Can be InForce, NotInForce, PartiallyInForce |
 | workExample | Legislation (representing a specific version of the act) | 0..n | |
-| inLanguage | xsd:string | 0..n | Use 2-letters language codes. |
+| inLanguage | xsd:string | 0..n | Use 2-letters language codes. Repeat if act is multilingual |
 
 ##### Optionnal properties for abstract act
 
