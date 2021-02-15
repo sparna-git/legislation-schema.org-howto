@@ -258,7 +258,7 @@ An Act version will never be described on its own, but it will always be include
 | datePublished |  | 0..n ||
 | temporalCoverage |  | 0..n ||
 | legislationConsolidates |  | 0..n ||
-| `@reverse` all properties listed in the Legal analysis section. |  | 0..n ||
+| `@reverse` all [Legal analysis properties](#Legal-analysis-properties) |  | 0..n ||
 
 #### Optional properties for Act version
 
@@ -319,7 +319,7 @@ The base act and the abstract consolidated act can be described with the same pr
 | publisher | |  0..n ||
 | spatialCoverage | |  0..n ||
 | temporalCoverage | | 0..1 ||
-| `@reverse` all properties listed in the Legal analysis section. |  | 0..n ||
+| `@reverse` all [Legal analysis properties](#Legal-analysis-properties). |  | 0..n ||
 
 #### Example
 
@@ -379,7 +379,7 @@ The base act and the abstract consolidated act can be described with the same pr
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| all properties listed in the Legal analysis section. |  | 0..n ||
+| all [Legal analysis properties](#Legal-analysis-properties) |  | 0..n ||
 
 #### Example
 
