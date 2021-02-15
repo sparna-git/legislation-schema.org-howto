@@ -334,7 +334,7 @@ The base act and the abstract consolidated act can be described with the same pr
 | ---------| ----- | ----- | ---------- |
 | contentUrl | URL | 1..1 | |
 | encodingFormat | xsd:string | 1..1 | |
-| inLanguage | xsd:string | 1..n | |
+| inLanguage | xsd:string | 1..n | In the rare case that the _same document_ contains the act text in multiple languages, that property can be repeated at this level. |
 | `@reverse` encoding | Legislation (Base Act) or Legislation (Act Version) | 1..1 ||
 
 #### Recommended properties for Legislation file
@@ -358,26 +358,28 @@ The base act and the abstract consolidated act can be described with the same pr
 
 
 
-### Article (or other subdivision)
+### Article or other subdivision
 
 
-#### Mandatory properties for Article (or other subdivision)
-
-| Property | Range | Card. | Usage Note |
-| ---------| ----- | ----- | ---------- |
-| xxxxx |  | 0..n ||
-
-#### Recommended properties for Article (or other subdivision)
+#### Mandatory properties for Article or other subdivision
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| xxxxx |  | 0..n ||
+| name |  | 1..1 ||
+| legislationIdentifier |  | 1..1 ||
 
-#### Optional properties for Article (or other subdivision)
+#### Recommended properties for Article or other subdivision
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| xxxxx |  | 0..n ||
+| text |  xsd:string | 0..1 ||
+| hasPart |  Legislation (Article or another subdivision) | 0..n ||
+
+#### Optional properties for Article or other subdivision
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| all properties listed in the Legal analysis section. |  | 0..n ||
 
 #### Example
 
