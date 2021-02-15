@@ -11,14 +11,14 @@
 
 ## Welcome
 
-This guide is intended for data publisher that wish to disseminate structured metadata about legislation on the web using **[schema.org Legislation extension](http://schema.org/Legislation)**. This is especially targeted at stakeholders of the [European Legislation Identifier](https://eur-lex.europa.eu/eli-register/about.html) initiative, that are already engaged in the dissemination of structured metadata using the [ELI ontology](https://op.europa.eu/en/web/eu-vocabularies/model/-/resource/dataset/eli). This is also useful for:
+This guide is intended for data publishers that wish to disseminate structured metadata about legislation on the web using **[schema.org Legislation extension](http://schema.org/Legislation)**. It is especially targeted at stakeholders of the [European Legislation Identifier (ELI)](https://eur-lex.europa.eu/eli-register/about.html) initiative, that are already engaged in the dissemination of structured data using the [ELI ontology](https://op.europa.eu/en/web/eu-vocabularies/model/-/resource/dataset/eli). This guide should also be useful for:
   
   - Official Journals of non-EU member states wishing to engage into structured data dissemination
   - Local administrations creating legal act or regulations
-  - EU institutions publishing regulations
-  - Private legal publishers interested in making their content more visible
+  - EU or internation institutions publishing regulations
+  - Private legal publishers interested in making their content more visible on the web
 
-This guide assumes that the reader is comfortable with what schema.org is, and how to decode the [JSON-LD](https://json-ld.org/) syntax, since exemples are given in this syntax.
+This guide assumes that the reader is comfortable with schema.org, with the [JSON-LD](https://json-ld.org/) syntax, and with legislation publishing and consolidations.
 
 ## Legislation on the web, schema.org, and ELI
 
@@ -37,7 +37,7 @@ These 2 mockups show the "dream" in terms of search use-cases around legislation
   
   ![Legislation in knowledge graph](/images/legislation-knowledge-graph.png)
 
-These mockups display specific structured metadata about the act:
+These mockups display specific structured data about the act:
   - Title of the act
   - Summary
   - Whether the act is still in force or not
@@ -48,7 +48,7 @@ These mockups display specific structured metadata about the act:
   - Type of act
   - Links to other texts (here, an abrogation link)
   
-These are only mockups, of course, and they do not represent a commitment of any search engine to implement this as this is depicted.
+These are only mockups, of course, and they do not represent a commitment of any search engine to implement this as it is depicted.
 
 ### Resources
 
@@ -79,13 +79,11 @@ The necessary attributes to describe legislation in schema.org are summarized in
 ![Legislation schema.org diagram](/images/legislation-schemaorg-diagram.png)
 
 This diagram gives a good overview of which properties are interesting/necessary for the description of legal acts, however it is not sufficient :
-  - It does not indicate that some properties carry different semantics depending on where they are expressed.
+  - It does not capture the difference between what is a "base act" published in an Official Journal, what is an amending act, what is a consolidated version, etc.
   - It does not reflect the good practices in terms of legal act description, as seen in different EU Member States within the ELI Taskforce.
-  - It does not express the difference between what is a "base act" published in an Official Journal, what is an amending act, what is a consolidated version, etc.
+  - It does not indicate that some properties have slightly different meaning depending on where they are expressed.
 
-The rest of this guide captures the good practices in terms of data modeling for the description of legal acts and how to apply them in the context of the schema.org Legislation extension.
-
-In a sense it gives an _application profile_ of schema.org for the description of legislation. It is certainly not the only and definitive solution for the description of legislation, alternative solutions are of course possible.
+The rest of this guide captures the good practices in terms of data modeling for the description of legal acts and how to apply them in the context of the schema.org Legislation extension. It renders these good practices as an _application profile_ of schema.org for the description of legislation. It is certainly not the only and definitive solution for the description of legislation, alternative solutions are of course possible.
 
 
 ## Good practices for the description of Legislation in schema.org
@@ -95,10 +93,10 @@ In a sense it gives an _application profile_ of schema.org for the description o
 The [`schema:Legislation`](http://schema.org/Legislation) type in schema.org may be used to describe different things:
 
   1. A **base act** published in an official journal. This is the "birth" of a legal act.
-  2. An **amending act**, also published in an official journal, amending the base act. This is expressed like a "diff" applied on the base act ("In the base act, point 2 of article 3 is replaced by the following : ....")
+  2. An **amending act**, also published in an official journal, amending the base act. This is expressed like a "diff" applied on the base act (_"In the base act, point 2 of article 3 is replaced by the following : ...."_)
   3. A **consolidated version** of the base act, as amended by one or more amending act. This is the base act, with all its "diffs" applied on it.
   4. The **"abstract" act**, that is the act as an intellectual work, independantly of one of its (consolidated) version. This is intuitively what we are using when writing a legal reference without specifying a version : _"Council Directive (EC) 93/104 concerning certain aspects of the organisation of working time [1993] OJ   L307/18 (Working  Time  Directive)"_.
-  5. An **article or another subdivision** of the base act, or one of its subsequent consolidated version.
+  5. An **article or another subdivision** inside the base act, or one of its version.
   
 ### Base act, amending acts, consolidated versions, abstract act
 
@@ -118,7 +116,7 @@ This is the sequence of events that this diagram depicts :
 
 There are a few important things to note:
 
-- Even though the textual content of the Consolidated version V0 is identical to the base act, it is really considered as another document, hence another entity. It is usually not published by the same system, does not have the same legal value as the base act, is not under the same responsibilities, may differ in its cover page or number, is not presented in the same web page, etc. For all these reasons, it is something different - but related, of course.
+- Even though the textual content of the Consolidated version V0 is identical to the base act, it is really considered as another document, hence another entity. It is usually not published by the same system, does not have the same legal value as the base act, is not under the same responsibilities, may differ in its cover page or number, is not presented in the same web page, etc. For all these reasons, it is something different - but related.
 - The abstract act encompasses the successive consolidated versions of the act, but not the base act itself. The base act "gives birth to" the consolidated versions, but is not considered a version in itself; instead the consolidated version v0 represents the first version of the act.
 - As they are not versionned strictly speaking, the base act and the amending acts do not have their "abstract" level, like the consolidated versions have.
 
@@ -148,7 +146,7 @@ These links:
 
 ### Articles and Subdivisions
 
-Articles and other subdivisions are also typed as [`schema:Legislation`](http://schema.org/Legislation). The whole act points to its subdivision using [`schema:hasPart`](http://schema.org/hasPart).
+Articles and other subdivisions are also typed as [`schema:Legislation`](http://schema.org/Legislation). The whole act refers to its subdivisions using [`schema:hasPart`](http://schema.org/hasPart), and subdivisions can contain other subdivisions. The usage of subdivision is not mandatory, and the data can stop at describing the whole act only.
 
 The combination of _legal analysis_ links and subdivisions is depicted in the below diagram:
 
@@ -168,16 +166,16 @@ This is the content depicted in this diagram:
 In addition to the legal analysis relationships described above that refer to acts in the same legal corpus, other links are provided to refer to acts of another legal corpus, typically to refer to EU directives or regulations that are transposed or implemented by EU Member States. This also covers Non-EU cases of local regulation applying a national legislation. The relations are:
 
 - [`schema:legislationApplies`](http://schema.org/legislationApplies) is a generic link to state that an act somehow transfers another act into another legislative context; this link has subproperties:
-  - [`schema:legislationTransposes`](http://schema.org/legislationTransposes); this link is highly specific to EU directive transposition, and has a precise, legally-binding, meaning;
-  - [`schema:legislationEnsuresImplementationOf`](http://schema.org/legislationEnsuresImplementationOf); to be used for EU regulations that are not transposed, or to state that an act makes sure there is no conflict for another act to apply;
-  - [`schema:sameAs`](http://schema.org/sameAs)
+  - [`schema:legislationTransposes`](http://schema.org/legislationTransposes) : this link is highly specific to EU directive transposition, and has a precise, legally-binding, meaning;
+  - [`schema:legislationEnsuresImplementationOf`](http://schema.org/legislationEnsuresImplementationOf) : to be used for EU regulations that are not transposed, or to state that an act makes sure there is no conflict for another act to apply;
+- [`schema:sameAs`](http://schema.org/sameAs) : in the specific case where a legal act published in a different legal corpus is getting republished in this corpus, for example EU directives republished in national Official Journals, or national acts republished in local journals;
 
 
 ## Legislation in schema.org Application Profile
 
 ### Abstract act
 
-The abstract act is the one that we intuitively refer to when talking about the legislation without specifying which version we are referring to. Its metadata should contain sufficient information to be able to resolve references to this act; these information depends on the legal corpus.
+The abstract act is the one that we intuitively refer to when talking about the legislation without specifying which version we are referring to. Its metadata should contain sufficient information to be able to resolve references to this act; which precise information depends on the legal corpus.
 
 The Abstract act will usually be used within the markup for a specific version of the act, and include one `workExample` to point to the version visible in the current page.
 
@@ -185,7 +183,7 @@ The Abstract act will usually be used within the markup for a specific version o
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| [`name`](http://schema.org/name) | rdf:langLiteral | 1..n | An act may have more than one title, in case it is multilingual.  |
+| [`name`](http://schema.org/name) | rdf:langLiteral | 1..n | Title of the act. An act may have more than one title, in case it is multilingual.  |
 | [`isBasedOn`](http://schema.org/isBasedOn) | [Legislation (Base Act)](#base-act) | 1..n | Refers to the URI of the Base Act  |
 
 #### Recommended properties for Abstract act
@@ -193,30 +191,30 @@ The Abstract act will usually be used within the markup for a specific version o
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
 | [`inLanguage`](http://schema.org/inLanguage) | xsd:string | 0..n | Use 2-letters language codes. Repeat if act is multilingual |
-| [`legislationIdentifier`](http://schema.org/legislationIdentifier) | xsd:string | 0..1 | |
-| [`legislationDate`](http://schema.org/legislationDate) | xsd:date | 0..1 | |
+| [`legislationIdentifier`](http://schema.org/legislationIdentifier) | xsd:string | 0..1 | Number for the act |
+| [`legislationDate`](http://schema.org/legislationDate) | xsd:date | 0..1 | Date at which the text became an act |
 | [`legislationDateVersion`](http://schema.org/legislationDateVersion) | xsd:date | 0..1 | |
-| [`legislationLegalForce`](http://schema.org/legislationLegalForce) | LegalForceStatus | 0..1 | Can be InForce, NotInForce, PartiallyInForce |
+| [`legislationLegalForce`](http://schema.org/legislationLegalForce) | LegalForceStatus | 0..1 | Can be [`InForce`](http://schema.org/InForce), [`NotInForce`](http://schema.org/NotInForce), [`PartiallyInForce`](http://schema.org/PartiallyInForce) |
 | [`legislationType`](http://schema.org/legislationType) | xsd:string | 0..1 | |
-| [`workExample`](http://schema.org/workExample) | [Legislation (Act version)](#act-version) | 0..n | |
+| [`workExample`](http://schema.org/workExample) | [Legislation (Act version)](#act-version) | 0..n | Refers to specific versions of the legislation |
 
 
 #### Optional properties for Abstract act
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| [`about`](http://schema.org/about) || 0..n ||
-| [`alternateName`](http://schema.org/alternateName) || 0..n ||
-| [`datePublished`](http://schema.org/datePublished) | |  0..1 ||
-| [`description`](http://schema.org/description) || 0..n ||
-| [`isPartOf`](http://schema.org/isPartOf) | |  0..1 ||
-| [`legislationCountersignedBy`](http://schema.org/legislationCountersignedBy) | |  0..n ||
-| [`legislationDateOfApplicability`](http://schema.org/legislationDateOfApplicability) | |  0..1 ||
-| [`legislationPassedBy`](http://schema.org/legislationPassedBy) | |  0..n ||
-| [`legislationResponsible`](http://schema.org/legislationResponsible) | |  0..n ||
-| [`publisher`](http://schema.org/publisher) | |  0..n ||
-| [`spatialCoverage`](http://schema.org/spatialCoverage) | |  0..n ||
-| [`temporalCoverage`](http://schema.org/temporalCoverage) | | 0..1 ||
+| [`about`](http://schema.org/about) | xsd:string | 0..n | Keywords on the act, as string |
+| [`alternateName`](http://schema.org/alternateName) | xsd:string | 0..n | alternative or short title |
+| [`datePublished`](http://schema.org/datePublished) | |  0..1 | Date of publication in the Official Journal |
+| [`description`](http://schema.org/description) | xsd:string | 0..n ||
+| [`isPartOf`](http://schema.org/isPartOf) | PublicationIssue |  0..1 | The OJ issue identifier in which the act was published |
+| [`legislationCountersignedBy`](http://schema.org/legislationCountersignedBy) | xsd:string |  0..n ||
+| [`legislationDateOfApplicability`](http://schema.org/legislationDateOfApplicability) | xsd:date |  0..1 ||
+| [`legislationPassedBy`](http://schema.org/legislationPassedBy) | xsd:string |  0..n ||
+| [`legislationResponsible`](http://schema.org/legislationResponsible) | xsd:string |  0..n ||
+| [`publisher`](http://schema.org/publisher) | Person or Organization |  0..n ||
+| [`spatialCoverage`](http://schema.org/spatialCoverage) | Place |  0..n ||
+| [`temporalCoverage`](http://schema.org/temporalCoverage) | xsd:string | 0..1 | Use ISO 8601 time interval format, and use `xxxx-xx-xx/..` to represent an open-ended interval |
 
 #### Example
 
@@ -257,7 +255,7 @@ An Act version will never be described on its own, but it will always be include
 | datePublished |  | 0..n ||
 | temporalCoverage |  | 0..n ||
 | legislationConsolidates |  | 0..n ||
-| `@reverse` all [Legal analysis properties](#legal-analysis-properties) |  | 0..n ||
+| `@reverse` all [legal analysis properties](#legal-analysis-properties) |  | 0..n ||
 
 #### Optional properties for Act version
 
@@ -275,13 +273,6 @@ An Act version will never be described on its own, but it will always be include
 ```
 
 ### Base act
-
-The base act and the abstract consolidated act can be described with the same properties in schema.org, except:
-- only the abstract act have [`schema:workExample`](http://schema.org/workExample) to point to its versions.
-- only the abstract act have [`schema:isBasedOn`](http://schema.org/isBasedOn) to state it is derived from the base act.
-- the abstract act cannot be divided in subdivisions, so cannot have [`schema:isPartOf`](http://schema.org/isPartOf).
-- the abstract act is abstract and cannot have actual content referred to by [`schema:encoding`](http://schema.org/encoding).
-- the abstract act can have [`schema:legislationDateVersion`](http://schema.org/legislationDateVersion) to indicate that the metadata are valid at a certain date.
 
 #### Mandatory properties for Base act
 
@@ -318,12 +309,17 @@ The base act and the abstract consolidated act can be described with the same pr
 | publisher | |  0..n ||
 | spatialCoverage | |  0..n ||
 | temporalCoverage | | 0..1 ||
-| `@reverse` all [Legal analysis properties](#legal-analysis-properties). |  | 0..n ||
+| all [legal analysis properties](#legal-analysis-properties). |  | 0..n ||
+| all [transposition and implementation properties](#transposition-and-implementation-properties). |  | 0..n ||
 
 #### Example
 
 ```json
 ```
+
+### Modifying act
+
+The description of a Modifying act is the same as the one for a Base act.
 
 ### Legislation file
 
@@ -390,8 +386,6 @@ The base act and the abstract consolidated act can be described with the same pr
 
 ### Legal analysis properties
 
-These properties are common to different entities in the application profile :
-
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
 | legislationChanges |  | 0..n ||
@@ -401,6 +395,15 @@ These properties are common to different entities in the application profile :
 | legislationCorrects |  | 0..n ||
 | citation |  | 0..n ||
 | isBasedOn |  | 0..n ||
+
+### Transposition and implementation properties
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| legislationApplies |  | 0..n ||
+| legislationTransposes |  | 0..n ||
+| legislationEnsuresImplementationOf |  | 0..n ||
+| sameAs |  | 0..n ||
 
 ### Semantic Pitfalls
 
