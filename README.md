@@ -186,20 +186,19 @@ The Abstract act will usually be used within the markup for a specific version o
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
 | [`name`](http://schema.org/name) | rdf:langLiteral | 1..n | An act may have more than one title, in case it is multilingual.  |
-
+| [`isBasedOn`](http://schema.org/isBasedOn) | [Legislation (Base Act)](#base-act) | 1..n | Refers to the URI of the Base Act  |
 
 #### Recommended properties for Abstract act
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
 | [`inLanguage`](http://schema.org/inLanguage) | xsd:string | 0..n | Use 2-letters language codes. Repeat if act is multilingual |
-| [`isBasedOn`](http://schema.org/isBasedOn) | [Legislation (Base Act)](#base-act) | 1..n | Refers to the URI of the Base Act  |
 | [`legislationIdentifier`](http://schema.org/legislationIdentifier) | xsd:string | 0..1 | |
 | [`legislationDate`](http://schema.org/legislationDate) | xsd:date | 0..1 | |
 | [`legislationDateVersion`](http://schema.org/legislationDateVersion) | xsd:date | 0..1 | |
 | [`legislationLegalForce`](http://schema.org/legislationLegalForce) | LegalForceStatus | 0..1 | Can be InForce, NotInForce, PartiallyInForce |
 | [`legislationType`](http://schema.org/legislationType) | xsd:string | 0..1 | |
-| [`workExample`](http://schema.org/workExample) | Legislation (representing a specific version of the act) | 0..n | |
+| [`workExample`](http://schema.org/workExample) | [Legislation (Act version)](#act-version) | 0..n | |
 
 
 #### Optional properties for Abstract act
