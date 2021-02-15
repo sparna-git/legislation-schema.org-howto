@@ -386,3 +386,16 @@ The base act and the abstract consolidated act can be described with the same pr
 ```json
 ```
 
+### Legal analysis properties
+
+These properties are common to different entities in the application profile :
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| legislationChanges |  | 0..n ||
+| legislationAmends |  | 0..n ||
+| legislationRepeals |  | 0..n ||
+| legislationCommences |  | 0..n ||
+| legislationCorrects |  | 0..n ||
+| citation |  | 0..n ||
+| isBasedOn |  | 0..n ||
