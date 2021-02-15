@@ -163,31 +163,22 @@ This is the content depicted in this diagram:
 5. Modifying act 1 and 2 are consolidated by Consolidated Act V2, that contains only 1 article (because article 2 was repealed).
 
 
-### Describing a base act or an abstract consolidated act
+## Legislation in schema.org Application Profile
 
-The base act and the abstract consolidated act can be described with the same properties in schema.org, except:
-- only the abstract consolidated act have [`schema:workExample`](http://schema.org/workExample) to point to its versions.
-- only the abstract consolidated act have [`schema:isBasedOn`](http://schema.org/isBasedOn) to state it is derived from the base act.
-- the abstract consolidated act cannot be divided in subdivisions, so cannot have [`schema:isBasedOn`](http://schema.org/isPartOf).
-- the abstract consolidated act is abstract and cannot have actual content referred to by [`schema:encoding`](http://schema.org/encoding).
-- the abstract consolidated act can have [`schema:legislationDateVersion`](http://schema.org/legislationDateVersion) to indicate that the metadata are valid at a certain date.
+### Abstract act
 
-### Description of an abstract act
+The abstract act is the one that we intuitively refer to when talking about the legislation without specifying which version we are referring to. Its metadata should contain sufficient information to be able to resolve references to this act; these information depends on the legal corpus.
 
-#### Properties
+The Abstract act will usually be used within the markup for a specific version of the act, and include one `workExample` to point to the version visible in the current page.
 
-The abstract act is the one that we intuitively refer to when talking about the legislation without specifying which version we are referring to.
-
-The following properties are available to describe the abstract act:
-
-##### Mandatory properties for abstract act
+#### Mandatory properties for Abstract act
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
 | name | rdf:langLiteral | 1..n | An act may have more than one title, in case it is multilingual.  |
 
 
-##### Recommended properties for abstract act
+#### Recommended properties for Abstract act
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
@@ -200,7 +191,7 @@ The following properties are available to describe the abstract act:
 | workExample | Legislation (representing a specific version of the act) | 0..n | |
 | inLanguage | xsd:string | 0..n | Use 2-letters language codes. Repeat if act is multilingual |
 
-##### Optionnal properties for abstract act
+#### Optionnal properties for Abstract act
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
@@ -238,41 +229,118 @@ The following properties are available to describe the abstract act:
 }
 ```
 
-### Description of an act version
+### Act version
 
-#### Properties
+An Act version will never be described on its own, but it will always be included in the Abstract act description inside a `workExample` property.
+
+#### Mandatory properties for Act version
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| xxxxx |  | 0..n ||
+
+#### Recommended properties for Act version
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| xxxxx |  | 0..n ||
+
+#### Optionnal properties for Act version
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| xxxxx |  | 0..n ||
+
+#### Example
+
+```json
+```
+
+### Base act
+
+The base act and the abstract consolidated act can be described with the same properties in schema.org, except:
+- only the abstract consolidated act have [`schema:workExample`](http://schema.org/workExample) to point to its versions.
+- only the abstract consolidated act have [`schema:isBasedOn`](http://schema.org/isBasedOn) to state it is derived from the base act.
+- the abstract consolidated act cannot be divided in subdivisions, so cannot have [`schema:isBasedOn`](http://schema.org/isPartOf).
+- the abstract consolidated act is abstract and cannot have actual content referred to by [`schema:encoding`](http://schema.org/encoding).
+- the abstract consolidated act can have [`schema:legislationDateVersion`](http://schema.org/legislationDateVersion) to indicate that the metadata are valid at a certain date.
+
+#### Mandatory properties for Act version
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| xxxxx |  | 0..n ||
+
+#### Recommended properties for Act version
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| xxxxx |  | 0..n ||
+
+#### Optionnal properties for Act version
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| xxxxx |  | 0..n ||
 
 #### Example
 
 ```json
 ```
 
-### Description of a base act
+### Legislation file
 
-#### Properties
+#### Mandatory properties for Act version
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| xxxxx |  | 0..n ||
+
+#### Recommended properties for Act version
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| xxxxx |  | 0..n ||
+
+#### Optionnal properties for Act version
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| xxxxx |  | 0..n ||
+
+#### Example
+
+```json
+```
+
+
+
+### Article (or other subdivision)
+
+
+#### Mandatory properties for Article (or other subdivision)
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| xxxxx |  | 0..n ||
+
+#### Recommended properties for Article (or other subdivision)
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| xxxxx |  | 0..n ||
+
+#### Optionnal properties for Article (or other subdivision)
+
+| Property | Range | Card. | Usage Note |
+| ---------| ----- | ----- | ---------- |
+| xxxxx |  | 0..n ||
 
 #### Example
 
 ```json
 ```
 
-### Description of a legislation file
-
-#### Properties
-
-#### Example
-
-```json
-```
-
-### Description of an article (or other subdivision)
-
-#### Properties
-
-#### Example
-
-```json
-```
 
 ### Special relations to EU directives or regulations (or other higher-level legal corpus)
 
