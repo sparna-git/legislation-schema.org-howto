@@ -224,7 +224,7 @@ The Abstract act will usually be used within the markup for a specific version o
 
 ```
 {
-	"@id" : "http://country.xyz/eli/decree/1234-56/consolidated", 
+	"@id" : "http://country.xyz/eli/decree/1234-56", 
 	"@type" : "Legislation",
 	"name" : [
 		{ "@value" : "Decree of the XXXX-XX-XX regarding...", "@language" : "en" }
@@ -237,7 +237,7 @@ The Abstract act will usually be used within the markup for a specific version o
 	"legislationLegalForce" : "InForce",
 	"temporalCoverage" : "2019-09-22/..",
 	"legislationDateVersion" : "2021-01-28",
-	"isBasedOn" : "http://country.xyz/eli/decree/1234-56",
+	"isBasedOn" : "http://country.xyz/eli/decree/1234-56/oj"
 }
 ```
 
@@ -277,6 +277,45 @@ An Act version will never be described on its own, but it will always be include
 #### Example
 
 ```json
+{
+	"@id" : "http://country.xyz/eli/decree/1234-56", 
+	"@type" : "Legislation",
+	"name" : [
+		{ "@value" : "Decree of the XXXX-XX-XX regarding...", "@language" : "en" }
+		{ "@value" : "Décret du ... portant sur ...", "@language" : "fr" }
+	],
+	"legislationIdentifier" : "1234-56",
+	"legislationType" : "Decree",
+	"inLanguage" : ["fr", "en"],
+	"legislationDate" : "2019-09-22",
+	"legislationLegalForce" : "InForce",
+	"temporalCoverage" : "2019-09-22/..",
+	"legislationDateVersion" : "2021-01-28",
+	"isBasedOn" : "http://country.xyz/eli/decree/1234-56/oj",
+	"workExample" : {
+		"@id" : "http://country.xyz/eli/decree/1234-56/20200301",
+		"@type" : "Legislation",
+		"datePublished" : "2020-03-03",
+		"temporalCoverage" : "2020-03-01/..",
+		"legislationLegalForce" : "NotInForce",
+		"legislationConsolidates" : [
+			"http://country.xyz/eli/decree/1234-56/oj",
+			"http://country.xyz/eli/modifyingAct/ABC",
+			"http://country.xyz/eli/modifyingAct/DEF",
+		],
+		"text" : "...",
+		"@reverse" : {
+			"legislationAmends" : [
+				"http://country.xyz/eli/modifyingAct/GHI",
+				"http://country.xyz/eli/modifyingAct/JKL"
+			]
+		}
+		
+		"encoding" : {
+			...
+		}
+	}
+}
 ```
 
 ### Base act
@@ -324,6 +363,28 @@ An Act version will never be described on its own, but it will always be include
 #### Example
 
 ```json
+{
+	"@id" : "http://country.xyz/eli/decree/1234-56/oj",
+	"@type" : "Legislation",
+	"name" : [
+		{ "@value" : "Decree of the XXXX-XX-XX regarding...", "@language" : "en" }
+		{ "@value" : "Décret du ... portant sur ...", "@language" : "fr" }
+	],
+	"legislationIdentifier" : "1234-56",
+	"legislationType" : "Decree",
+	"inLanguage" : ["fr", "en"],
+	"legislationDate" : "2019-09-22",
+	"datePublished" : "2019-09-23",
+	"isPartOf" : {
+		"@id": "http://country.xyz/official-journal/20190923",
+		"@type" : "PublicationIssue",
+		"name" : "Official Journal from 2019-09-23"
+	},
+
+	"encoding" : {
+		...
+	}
+}
 ```
 
 ### Modifying act
@@ -360,6 +421,49 @@ The description of a Modifying act is the same as the one for a Base act.
 #### Example
 
 ```json
+{
+	"@id" : "http://country.xyz/eli/decree/1234-56", 
+	"@type" : "Legislation",
+	"workExample" : {
+		"@id" : "http://country.xyz/eli/decree/1234-56/20200301",
+		"@type" : "Legislation",
+		"encoding" : {
+			"@id" : "http://country.xyz/eli/decree/1234-56/20200301/fr/pdf",
+			"@type" : "LegislationObject",
+			"inLanguage" : "fr",
+			"encodingFormat" : "application/pdf",
+			"contentUrl" : "http://country.xyz/wp-content/1234-56-20200301-fr.pdf",
+			"legislationLegalValue" : "OfficialLegalValue",
+			"license" : "...",
+			"copyrightHolder" : "...",
+			"publisher" : "..."
+		},
+		"encoding" : {
+			"@id" : "http://country.xyz/eli/decree/1234-56/20200301/en/pdf",
+			"@type" : "LegislationObject",
+			"inLanguage" : "en",
+			"encodingFormat" : "application/pdf",
+			"contentUrl" : "http://country.xyz/wp-content/1234-56-20200301-en.pdf",
+			"legislationLegalValue" : "OfficialLegalValue"
+		},
+		"encoding" : {
+			"@id" : "http://country.xyz/eli/decree/1234-56/20200301/fr/html",
+			"@type" : "LegislationObject",
+			"inLanguage" : "fr",
+			"encodingFormat" : "text/html",
+			"contentUrl" : "http://country.xyz/wp-content/1234-56-20200301-fr.html",
+			"legislationLegalValue" : "OfficialLegalValue"
+		},
+		"encoding" : {
+			"@id" : "http://country.xyz/eli/decree/1234-56/20200301/en/html",
+			"@type" : "LegislationObject",
+			"inLanguage" : "en",
+			"encodingFormat" : "text/html",
+			"contentUrl" : "http://country.xyz/wp-content/1234-56-20200301-en.html",
+			"legislationLegalValue" : "OfficialLegalValue"
+		}
+	}
+}
 ```
 
 
@@ -395,6 +499,32 @@ The description of a Modifying act is the same as the one for a Base act.
 #### Example
 
 ```json
+{
+	"@id" : "http://country.xyz/eli/decree/1234-56", 
+	"@type" : "Legislation",
+	"workExample" : {
+		"@id" : "http://country.xyz/eli/decree/1234-56/20200301",
+		"@type" : "Legislation",		
+		"hasPart" : [
+		{
+			"@id" : "http://country.xyz/eli/decree/1234-56/20200301/art_1", 
+			"@type" : "Legislation",
+			"name" : "Article 1",
+			"legislationIdentifier" : "1",
+			"text" : "No person shall drive a vehicle on a section of road which is subject to a variable speed limit at a speed exceeding that indicated by a speed limit sign."
+		},
+		{
+			"@id" : "http://country.xyz/eli/decree/1234-56/20200301/art_2", 
+			"@type" : "Legislation",
+			"name" : "Article 2",
+			"legislationIdentifier" : "2",
+			"text" : "...",
+			"hasPart" : [
+				...
+			]
+		}
+	}
+}
 ```
 
 ### Legal analysis properties
