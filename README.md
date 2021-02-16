@@ -362,16 +362,16 @@ The description of a Modifying act is the same as the one for a Base act.
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| name | xsd:string | 1..1 ||
-| legislationIdentifier | xsd:string | 1..1 ||
+| [`name`](http://schema.org/name) | xsd:string | 1..1 ||
+| [`legislationIdentifier`](http://schema.org/legislationIdentifier) | xsd:string | 1..1 ||
 
 #### Recommended properties for Article or other subdivision
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| hasPart | Legislation (Article or another subdivision) | 0..n | A subdivision may contain other subdivisions |
-| legislationLegalForce | LegalForceStatus | 0..1 | The legal force of the article. Articles within the same act can have a different legal force. Can be InForce, NotInForce, PartiallyInForce |
-| text |  xsd:string | 0..1 | May contain the textual content of the article, as a plain string |
+| [`hasPart`](http://schema.org/hasPart) | Legislation (Article or another subdivision) | 0..n | A subdivision may contain other subdivisions |
+| [`legislationLegalForce`](http://schema.org/legislationLegalForce) | LegalForceStatus | 0..1 | The legal force of the article. Articles within the same act can have a different legal force. Can be InForce, NotInForce, PartiallyInForce |
+| [`text`](http://schema.org/text) |  xsd:string | 0..1 | May contain the textual content of the article, as a plain string |
 
 #### Optional properties for Article or other subdivision
 
@@ -391,22 +391,22 @@ The description of a Modifying act is the same as the one for a Base act.
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| citation | CreativeWork | 0..n | Legal citation in the text |
-| isBasedOn | Legislation | 0..n | Indicates that an act relies on another, typically secondary legislation is based on primary legislation, itself based on constitution |
-| legislationChanges | Legislation (Act version or subdivision thereof) | 0..n | Indicates a modification in the legal content of the act |
-| legislationAmends | Legislation (Act version or subdivision thereof) | 0..n | A modification in the content |
-| legislationRepeals | Legislation (Act version or subdivision thereof) | 0..n | Cancels a legislation or an article |
-| legislationCommences | Legislation (Act version or subdivision thereof) | 0..n | Sets another legislation or article into force |
-| legislationCorrects | Legislation (Act version or subdivision thereof) | 0..n | Indicates a correction that does not affect the legal content of the act |
+| [`citation`](http://schema.org/citation) | CreativeWork | 0..n | Legal citation in the text |
+| [`isBasedOn`](http://schema.org/isBasedOn) | Legislation | 0..n | Indicates that an act relies on another, typically secondary legislation is based on primary legislation, itself based on constitution |
+| [`legislationChanges`](http://schema.org/legislationChanges) | Legislation (Act version or subdivision thereof) | 0..n | Indicates a modification in the legal content of the act |
+| [`legislationAmends`](http://schema.org/legislationAmends) | Legislation (Act version or subdivision thereof) | 0..n | A modification in the content |
+| [`legislationRepeals`](http://schema.org/legislationRepeals) | Legislation (Act version or subdivision thereof) | 0..n | Cancels a legislation or an article |
+| [`legislationCommences`](http://schema.org/legislationCommences) | Legislation (Act version or subdivision thereof) | 0..n | Sets another legislation or article into force |
+| [`legislationCorrects`](http://schema.org/legislationCorrects) | Legislation (Act version or subdivision thereof) | 0..n | Indicates a correction that does not affect the legal content of the act |
 
 ### Transposition and implementation properties
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| legislationApplies | Legislation | 0..n | Generic link to state that an act somehow transfers another act into another legislative context |
-| legislationTransposes | Legislation | 0..n | Specific to EU directives transposition, with a precise, legally-binding, meaning |
-| legislationEnsuresImplementationOf | Legislation | 0..n | To be used for EU regulations that are not transposed, or to state that an act makes sure there is no conflict for another act to apply |
-| sameAs | Legislation (Base act) | 0..n | In the specific case where a legal act published in a different legal corpus is getting republished in this corpus, for example EU directives republished in national Official Journals, or national acts republished in local journals |
+| [`legislationApplies`](http://schema.org/legislationApplies) | Legislation | 0..n | Generic link to state that an act somehow transfers another act into another legislative context |
+| [`legislationTransposes`](http://schema.org/legislationTransposes) | Legislation | 0..n | Specific to EU directives transposition, with a precise, legally-binding, meaning |
+| [`legislationEnsuresImplementationOf`](http://schema.org/legislationEnsuresImplementationOf) | Legislation | 0..n | To be used for EU regulations that are not transposed, or to state that an act makes sure there is no conflict for another act to apply |
+| [`sameAs`](http://schema.org/sameAs) | Legislation (Base act) | 0..n | In the specific case where a legal act published in a different legal corpus is getting republished in this corpus, for example EU directives republished in national Official Journals, or national acts republished in local journals |
 
 
 ### Semantic Pitfalls
