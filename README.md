@@ -184,6 +184,8 @@ The Abstract act will usually be used within the markup for a specific version o
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
+| `@id` | URI | 1..1 | URI identifier for the abstract act.  |
+| `@type` | fixed value `Legislation` | 1..1 | Always set the type to `Legislation`  |
 | [`name`](http://schema.org/name) | rdf:langLiteral | 1..n | Title of the act. An act may have more than one title, in case it is multilingual.  |
 
 
@@ -247,8 +249,10 @@ An Act version will never be described on its own, but it will always be include
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| `@reverse` [`workExample`](http://schema.org/workExample) | [Legislation (Abstract Act)](#abstract-act) | 0..1 | An Act version must be described within the context of an Abstract Act (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
+| `@id` | URI | 1..1 | URI identifier for the act version, typically including a date to identify the version  |
+| `@type` | fixed value `Legislation` | 1..1 | Always set the type to `Legislation`  |
 | [`encoding`](http://schema.org/encoding) | [Legislation file](#legislation-file) | 1..n | Refers to file expressing this act version, in PDF, HTML, etc. and in a given language |
+| `@reverse` [`workExample`](http://schema.org/workExample) | [Legislation (Abstract Act)](#abstract-act) | 0..1 | An Act version must be described within the context of an Abstract Act (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
 
 #### Recommended properties for Act version
 
@@ -280,6 +284,8 @@ An Act version will never be described on its own, but it will always be include
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
+| `@id` | URI | 1..1 | URI identifier for the base act  |
+| `@type` | fixed value `Legislation` | 1..1 | Always set the type to `Legislation`  |
 | [`name`](http://schema.org/name) | rdf:langLiteral | 1..n | An act may have more than one title, in case it is multilingual.  |
 | [`encoding`](http://schema.org/encoding) | [Legislation file](#legislation-file) | 1..n | Refers to file expressing the base act, in PDF, HTML, etc. and in a given language |
 
@@ -329,6 +335,8 @@ The description of a Modifying act is the same as the one for a Base act.
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
+| `@id` | URI | 1..1 | URI identifier for the legislation object  |
+| `@type` | fixed value `LegislationObject` | 1..1 | Always set the type to `LegislationObject`  |
 | [`contentUrl`](http://schema.org/contentUrl) | URL | 1..1 | URL of the actual file |
 | [`encodingFormat`](http://schema.org/encodingFormat) | xsd:string | 1..1 | Media type as a MIME format e.g. application/pdf, text/html, application/xml |
 | [`inLanguage`](http://schema.org/inLanguage) | xsd:string | 1..n | Language of the document. Use 2-letters language codes. In the rare case that the _same document_ contains the act text in multiple languages, that property can be repeated at this level. |
@@ -369,6 +377,7 @@ The description of a Modifying act is the same as the one for a Base act.
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
+| `@id` | URI | 0..1 | Although not strictly mandatory, it is a good practice to assign URI identifiers to subdivisions, too  |
 | [`hasPart`](http://schema.org/hasPart) | [Legislation (Article or other subdivision)](#article-or-other-subdivision) | 0..n | A subdivision may contain other subdivisions |
 | [`legislationLegalForce`](http://schema.org/legislationLegalForce) | [`LegalForceStatus`](http://schema.org/LegalForceStatus) | 0..1 | The legal force of the article. Articles within the same act can have a different legal force. Can be [`InForce`](http://schema.org/InForce), [`NotInForce`](http://schema.org/NotInForce), [`PartiallyInForce`](http://schema.org/PartiallyInForce) |
 | [`text`](http://schema.org/text) |  xsd:string | 0..1 | May contain the textual content of the article, as a plain string |
