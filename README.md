@@ -259,8 +259,9 @@ An Act version will never be described on its own, but it will always be include
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
 | [`datePublished`](http://schema.org/datePublished) | xsd:date | 0..n | The date at which this version was published (not to be confused with the date at which the original base act was published in the OJ) |
-| [`temporalCoverage`](http://schema.org/temporalCoverage) | [`Place`](http://schema.org/Place) | 0..n | The validity range of this version of the act, from the date it is consolidated to the date it is replaced by a new version. Not to be confused with the in force time span of the act itself. Use ISO 8601 time interval format, and use `xxxx-xx-xx/..` to represent an open-ended interval. |
 | [`legislationConsolidates`](http://schema.org/legislationConsolidates) | [Legislation (Base act)](#base-act) | 0..n | Points to the base act and all modifying act taken into account in this version |
+| [`legislationLegalForce`](http://schema.org/legislationLegalForce) | [`LegalForceStatus`](http://schema.org/LegalForceStatus) | 0..1 | Indicate the validity of that specific version of the act, as opposed the in-force status of the whole act itself. Can be [`InForce`](http://schema.org/InForce) or [`NotInForce`](http://schema.org/NotInForce) |
+| [`temporalCoverage`](http://schema.org/temporalCoverage) | [`Place`](http://schema.org/Place) | 0..n | The validity range of this version of the act, from the date it is consolidated to the date it is replaced by a new version. Not to be confused with the in force time span of the act itself. Use ISO 8601 time interval format, and use `xxxx-xx-xx/..` to represent an open-ended interval. |
 | `@reverse` all [legal analysis properties](#legal-analysis-properties) | - | 0..n | Backward links from all modifying acts that refer to this version (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
 
 #### Optional properties for Act version
@@ -420,7 +421,11 @@ The description of a Modifying act is the same as the one for a Base act.
 
 ### Semantic Pitfalls
 
-- isBasedOn
-- temporalCoverage
-- inLanguage
-- datePublished
+Some properties are used in different places with a slightly different meaning :
+
+- [`isBasedOn`](http://schema.org/isBasedOn) is used on Abstract Act, to indicate the Abstract Act is based on a Base Act, and in Legal analysis properties, to indicate that a secondary legislation is based on primary legislation;
+- [`legislationLegalForce`](http://schema.org/legislationLegalForce)  is used on Base Act or Abstract Act to indicate the in-force status of the act, and on an Act Version to indicate the validity status of this specific version;
+- [`temporalCoverage`](http://schema.org/temporalCoverage) is used on Base Act or Abstract Act to indicate the in-force date range of the act, and on an Act Version to indicate the validity range of this specific version;
+- [`inLanguage`](http://schema.org/inLanguage) is used on Base Act or Abstract Act to indicate the language(s) of the act, and on a Legislation file to indicate the language of the file
+- [`datePublished`](http://schema.org/datePublished) is used on Base Act or Abstract Act to indicate the date of publication of the act in the OJ, and on an Act Version to indicate the date of publication of that version
+
