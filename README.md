@@ -276,7 +276,7 @@ An Act version will never be described on its own, but it will always be include
 
 #### Example
 
-```json
+```
 {
 	"@id" : "http://country.xyz/eli/decree/1234-56", 
 	"@type" : "Legislation",
@@ -362,7 +362,7 @@ An Act version will never be described on its own, but it will always be include
 
 #### Example
 
-```json
+```
 {
 	"@id" : "http://country.xyz/eli/decree/1234-56/oj",
 	"@type" : "Legislation",
@@ -420,7 +420,7 @@ The description of a Modifying act is the same as the one for a Base act.
 
 #### Example
 
-```json
+```
 {
 	"@id" : "http://country.xyz/eli/decree/1234-56", 
 	"@type" : "Legislation",
@@ -498,7 +498,7 @@ The description of a Modifying act is the same as the one for a Base act.
 
 #### Example
 
-```json
+```
 {
 	"@id" : "http://country.xyz/eli/decree/1234-56", 
 	"@type" : "Legislation",
