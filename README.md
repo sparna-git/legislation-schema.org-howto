@@ -280,8 +280,8 @@ An Act version will never be described on its own, but it will always be include
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| name | rdf:langLiteral | 1..n | An act may have more than one title, in case it is multilingual.  |
-| encoding | LegislationObject | 1..n | Refers to file expressing the base act, in PDF, HTML, etc. and in a given language |
+| [`name`](http://schema.org/name) | rdf:langLiteral | 1..n | An act may have more than one title, in case it is multilingual.  |
+| [`encoding`](http://schema.org/encoding) | [Legislation file](#legislation-file) | 1..n | Refers to file expressing the base act, in PDF, HTML, etc. and in a given language |
 
 #### Recommended properties for Base act
 
@@ -329,24 +329,24 @@ The description of a Modifying act is the same as the one for a Base act.
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| contentUrl | URL | 1..1 | URL of the actual file |
-| encodingFormat | xsd:string | 1..1 | Media type as a MIME format e.g. application/pdf, text/html, application/xml |
-| inLanguage | xsd:string | 1..n | Language of the document. Use 2-letters language codes. In the rare case that the _same document_ contains the act text in multiple languages, that property can be repeated at this level. |
-| `@reverse` encoding | Legislation (Base Act) or Legislation (Act Version) | 1..1 | Backward link from the base act or the act version encoded by this legislation file. (`@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
+| [`contentUrl`](http://schema.org/contentUrl) | URL | 1..1 | URL of the actual file |
+| [`encodingFormat`](http://schema.org/encodingFormat) | xsd:string | 1..1 | Media type as a MIME format e.g. application/pdf, text/html, application/xml |
+| [`inLanguage`](http://schema.org/inLanguage) | xsd:string | 1..n | Language of the document. Use 2-letters language codes. In the rare case that the _same document_ contains the act text in multiple languages, that property can be repeated at this level. |
+| `@reverse` [`encoding`](http://schema.org/encoding) | Legislation (Base Act) or Legislation (Act Version) | 1..1 | Backward link from the base act or the act version encoded by this legislation file. (`@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
 
 #### Recommended properties for Legislation file
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| legislationLegalValue |  | 0..1 | The legal value of this file. Different files may have different legal values. Typically a digitally signed PDF have a "stronger" legal value than the HTML file of the same act. Values from stronger to weaker are DefinitiveLegalValue, AuthoritativeLegalValue, OfficialLegalValue, UnofficialLegalValue |
+| [`legislationLegalValue`](http://schema.org/legislationLegalValue) |  | 0..1 | The legal value of this file. Different files may have different legal values. Typically a digitally signed PDF have a "stronger" legal value than the HTML file of the same act. Values from stronger to weaker are DefinitiveLegalValue, AuthoritativeLegalValue, OfficialLegalValue, UnofficialLegalValue |
 
 #### Optional properties for Legislation file
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| copyrightHolder | [`Organization`](http://schema.org/Organization) | 0..1 ||
-| license | URL | 0..1 | License URL of this file |
-| publisher | [`Organization`](http://schema.org/Organization) | 0..1 | Publisher of the file |
+| [`copyrightHolder`](http://schema.org/copyrightHolder) | [`Organization`](http://schema.org/Organization) | 0..1 ||
+| [`license`](http://schema.org/license) | URL | 0..1 | License URL of this file |
+| [`publisher`](http://schema.org/publisher) | [`Organization`](http://schema.org/Organization) | 0..1 | Publisher of the file |
 
 #### Example
 
