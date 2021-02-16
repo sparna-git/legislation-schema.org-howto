@@ -184,7 +184,7 @@ The Abstract act will usually be used within the markup for a specific version o
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| `@id` | URI | 1..1 | URI identifier for the abstract act.  |
+| `@id` | URI | 1..1 | URI identifier for the abstract act. This identifier must be the same for each version of the same act. |
 | `@type` | fixed value `Legislation` | 1..1 | Always set the type to `Legislation`  |
 | [`name`](http://schema.org/name) | rdf:langLiteral | 1..n | Title of the act. An act may have more than one title, in case it is multilingual.  |
 
@@ -298,7 +298,7 @@ An Act version will never be described on its own, but it will always be include
 | [`legislationDate`](http://schema.org/legislationDate) | xsd:date | 0..1 | Date at which the text became an act |
 | [`legislationDateVersion`](http://schema.org/legislationDateVersion) | xsd:date | 0..1 | |
 | [`legislationLegalForce`](http://schema.org/legislationLegalForce) | [`LegalForceStatus`](http://schema.org/LegalForceStatus) | 0..1 | Can be [`InForce`](http://schema.org/InForce), [`NotInForce`](http://schema.org/NotInForce), [`PartiallyInForce`](http://schema.org/PartiallyInForce) |
-| [`legislationType`](http://schema.org/legislationType) | xsd:string | 0..1 | |
+| [`legislationType`](http://schema.org/legislationType) | xsd:string | 0..1 | Type of the text, as string (law, decree, etc.) |
 
 #### Optional properties for Base act
 
@@ -370,8 +370,8 @@ The description of a Modifying act is the same as the one for a Base act.
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| [`name`](http://schema.org/name) | xsd:string | 1..1 ||
-| [`legislationIdentifier`](http://schema.org/legislationIdentifier) | xsd:string | 1..1 ||
+| [`name`](http://schema.org/name) | xsd:string | 1..1 | Display title of the article, typically "Article 2" |
+| [`legislationIdentifier`](http://schema.org/legislationIdentifier) | xsd:string | 1..1 | Number of the subdivision, typically article number |
 
 #### Recommended properties for Article or other subdivision
 
@@ -388,7 +388,7 @@ The description of a Modifying act is the same as the one for a Base act.
 | ---------| ----- | ----- | ---------- |
 | [`spatialCoverage`](http://schema.org/spatialCoverage) | [`Place`](http://schema.org/Place) |  0..n | Articles within the same act can have different applicability areas |
 | [`temporalCoverage`](http://schema.org/temporalCoverage) | xsd:string | 0..1 | In force range of this article, from the date it was set in force to the date it was repealed. Use ISO 8601 time interval format, and use `xxxx-xx-xx/..` to represent an open-ended interval |
-| all [Legal analysis properties](#legal-analysis-properties) | Legislation ([Act version](#act-version) or [Article thereof](#article-or-other-subdivision) | 0..n | When the article is an article of a base act or a modifying act, it may have legal analysis links to act versions, or articles thereof |
+| all [Legal analysis properties](#legal-analysis-properties) | Legislation ([Act version](#act-version) or [Article thereof](#article-or-other-subdivision)) | 0..n | When the article is an article of a base act or a modifying act, it may have legal analysis links to act versions, or articles thereof |
 | `@reverse` all [Legal analysis properties](#legal-analysis-properties) | Legislation ([Modifying Act](#modifying-act) or [Article thereof](#article-or-other-subdivision)) | 0..n | When the article is an article of a an act version, it may have backward legal analysis links from modifying acts ot article thereof. (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
 
 #### Example
