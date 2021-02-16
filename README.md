@@ -196,8 +196,8 @@ The Abstract act will usually be used within the markup for a specific version o
 | [`legislationIdentifier`](http://schema.org/legislationIdentifier) | xsd:string | 0..1 | Number for the act |
 | [`legislationDate`](http://schema.org/legislationDate) | xsd:date | 0..1 | Date at which the text became an act |
 | [`legislationDateVersion`](http://schema.org/legislationDateVersion) | xsd:date | 0..1 | |
-| [`legislationLegalForce`](http://schema.org/legislationLegalForce) | LegalForceStatus | 0..1 | Can be [`InForce`](http://schema.org/InForce), [`NotInForce`](http://schema.org/NotInForce), [`PartiallyInForce`](http://schema.org/PartiallyInForce) |
-| [`legislationType`](http://schema.org/legislationType) | xsd:string | 0..1 | |
+| [`legislationLegalForce`](http://schema.org/legislationLegalForce) | [`LegalForceStatus`](http://schema.org/LegalForceStatus) | 0..1 | Can be [`InForce`](http://schema.org/InForce), [`NotInForce`](http://schema.org/NotInForce), [`PartiallyInForce`](http://schema.org/PartiallyInForce) |
+| [`legislationType`](http://schema.org/legislationType) | xsd:string | 0..1 | Type of the text, as string (law, decree, etc.) |
 | [`workExample`](http://schema.org/workExample) | [Legislation (Act version)](#act-version) | 0..n | Refers to specific versions of this legislation |
 
 
@@ -207,9 +207,9 @@ The Abstract act will usually be used within the markup for a specific version o
 | ---------| ----- | ----- | ---------- |
 | [`about`](http://schema.org/about) | xsd:string | 0..n | Keywords on the act, as string |
 | [`alternateName`](http://schema.org/alternateName) | xsd:string | 0..n | alternative or short title |
-| [`datePublished`](http://schema.org/datePublished) | |  0..1 | Date of publication in the Official Journal |
+| [`datePublished`](http://schema.org/datePublished) | xsd:date |  0..1 | Date of publication in the Official Journal |
 | [`description`](http://schema.org/description) | xsd:string | 0..n ||
-| [`isPartOf`](http://schema.org/isPartOf) | PublicationIssue |  0..1 | The OJ issue in which the act was published |
+| [`isPartOf`](http://schema.org/isPartOf) | [`PublicationIssue`](http://schema.org/PublicationIssue) |  0..1 | The OJ issue in which the act was published |
 | [`legislationCountersignedBy`](http://schema.org/legislationCountersignedBy) | xsd:string |  0..n ||
 | [`legislationDateOfApplicability`](http://schema.org/legislationDateOfApplicability) | xsd:date |  0..1 ||
 | [`legislationPassedBy`](http://schema.org/legislationPassedBy) | xsd:string |  0..n ||
@@ -247,7 +247,7 @@ An Act version will never be described on its own, but it will always be include
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| `@reverse` [`workExample`](http://schema.org/workExample) | Legislation (Abstract Act) | 0..1 | An Act version must be described within the context of an Abstract Act (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
+| `@reverse` [`workExample`](http://schema.org/workExample) | [Legislation (Abstract Act)](#abstract-act) | 0..1 | An Act version must be described within the context of an Abstract Act (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
 | [`encoding`](http://schema.org/encoding) | [Legislation file](#legislation-file) | 1..n | Refers to file expressing this act version, in PDF, HTML, etc. and in a given language |
 
 #### Recommended properties for Act version
@@ -255,18 +255,18 @@ An Act version will never be described on its own, but it will always be include
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
 | [`datePublished`](http://schema.org/datePublished) | xsd:date | 0..n | The date at which this version was published (not to be confused with the date at which the original base act was published in the OJ) |
-| [`temporalCoverage`](http://schema.org/temporalCoverage) |  | 0..n | The validity range of this version of the act, from the date it is consolidated to the date it is replaced by a new version. Not to be confused with the in force time span of the act itself. Use ISO 8601 time interval format, and use `xxxx-xx-xx/..` to represent an open-ended interval. |
-| [`legislationConsolidates`](http://schema.org/legislationConsolidates) |  | 0..n | Points to the base act and all modifying act taken into account in this version |
-| `@reverse` all [legal analysis properties](#legal-analysis-properties) |  | 0..n | Backward links from all modifying acts that refer to this version (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
+| [`temporalCoverage`](http://schema.org/temporalCoverage) | [`Place`](http://schema.org/Place) | 0..n | The validity range of this version of the act, from the date it is consolidated to the date it is replaced by a new version. Not to be confused with the in force time span of the act itself. Use ISO 8601 time interval format, and use `xxxx-xx-xx/..` to represent an open-ended interval. |
+| [`legislationConsolidates`](http://schema.org/legislationConsolidates) | [Legislation (Base act)](#base-act) | 0..n | Points to the base act and all modifying act taken into account in this version |
+| `@reverse` all [legal analysis properties](#legal-analysis-properties) | - | 0..n | Backward links from all modifying acts that refer to this version (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
 
 #### Optional properties for Act version
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| [`hasPart`](http://schema.org/hasPart) | Legislation (Article or other subdivision) | 0..n | Points to the articles or other subdivisions in this act version |
+| [`hasPart`](http://schema.org/hasPart) | [Legislation (Article or other subdivision)](#article-or-other-subdivision) | 0..n | Points to the articles or other subdivisions in this act version |
 | [`publisher`](http://schema.org/publisher) | [`Organization`](http://schema.org/Organization) | 0..n | Usually refers to the service/administration in charge of publishing consolidated texts (could be different than the organization publishing the OJ) |
 | [`text`](http://schema.org/text) | xsd:string | 0..1 | May contain the textual content of the act version, as a plain string |
-| [`version`](http://schema.org/version) |  | 0..1 ||
+| [`version`](http://schema.org/version) | xsd:string | 0..1 ||
 
 
 #### Example
@@ -291,7 +291,7 @@ An Act version will never be described on its own, but it will always be include
 | [`legislationIdentifier`](http://schema.org/legislationIdentifier) | xsd:string | 0..1 | Number for the act |
 | [`legislationDate`](http://schema.org/legislationDate) | xsd:date | 0..1 | Date at which the text became an act |
 | [`legislationDateVersion`](http://schema.org/legislationDateVersion) | xsd:date | 0..1 | |
-| [`legislationLegalForce`](http://schema.org/legislationLegalForce) | LegalForceStatus | 0..1 | Can be [`InForce`](http://schema.org/InForce), [`NotInForce`](http://schema.org/NotInForce), [`PartiallyInForce`](http://schema.org/PartiallyInForce) |
+| [`legislationLegalForce`](http://schema.org/legislationLegalForce) | [`LegalForceStatus`](http://schema.org/LegalForceStatus) | 0..1 | Can be [`InForce`](http://schema.org/InForce), [`NotInForce`](http://schema.org/NotInForce), [`PartiallyInForce`](http://schema.org/PartiallyInForce) |
 | [`legislationType`](http://schema.org/legislationType) | xsd:string | 0..1 | |
 
 #### Optional properties for Base act
@@ -300,9 +300,9 @@ An Act version will never be described on its own, but it will always be include
 | ---------| ----- | ----- | ---------- |
 | [`about`](http://schema.org/about) | xsd:string | 0..n | Keywords on the act, as string |
 | [`alternateName`](http://schema.org/alternateName) | xsd:string | 0..n | alternative or short title |
-| [`datePublished`](http://schema.org/datePublished) | |  0..1 | Date of publication in the Official Journal |
+| [`datePublished`](http://schema.org/datePublished) | xsd:date |  0..1 | Date of publication in the Official Journal |
 | [`description`](http://schema.org/description) | xsd:string | 0..n ||
-| [`isPartOf`](http://schema.org/isPartOf) | PublicationIssue |  0..1 | The OJ issue in which the act was published |
+| [`isPartOf`](http://schema.org/isPartOf) | [`PublicationIssue`](http://schema.org/PublicationIssue)  |  0..1 | The OJ issue in which the act was published |
 | [`legislationCountersignedBy`](http://schema.org/legislationCountersignedBy) | xsd:string |  0..n ||
 | [`legislationDateOfApplicability`](http://schema.org/legislationDateOfApplicability) | xsd:date |  0..1 ||
 | [`legislationPassedBy`](http://schema.org/legislationPassedBy) | xsd:string |  0..n ||
@@ -332,13 +332,13 @@ The description of a Modifying act is the same as the one for a Base act.
 | [`contentUrl`](http://schema.org/contentUrl) | URL | 1..1 | URL of the actual file |
 | [`encodingFormat`](http://schema.org/encodingFormat) | xsd:string | 1..1 | Media type as a MIME format e.g. application/pdf, text/html, application/xml |
 | [`inLanguage`](http://schema.org/inLanguage) | xsd:string | 1..n | Language of the document. Use 2-letters language codes. In the rare case that the _same document_ contains the act text in multiple languages, that property can be repeated at this level. |
-| `@reverse` [`encoding`](http://schema.org/encoding) | Legislation (Base Act) or Legislation (Act Version) | 1..1 | Backward link from the base act or the act version encoded by this legislation file. (`@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
+| `@reverse` [`encoding`](http://schema.org/encoding) | [Legislation (Base Act)](#base-act) or [Legislation (Act Version)](#act-version) | 1..1 | Backward link from the base act or the act version encoded by this legislation file. (`@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
 
 #### Recommended properties for Legislation file
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| [`legislationLegalValue`](http://schema.org/legislationLegalValue) |  | 0..1 | The legal value of this file. Different files may have different legal values. Typically a digitally signed PDF have a "stronger" legal value than the HTML file of the same act. Values from stronger to weaker are DefinitiveLegalValue, AuthoritativeLegalValue, OfficialLegalValue, UnofficialLegalValue |
+| [`legislationLegalValue`](http://schema.org/legislationLegalValue) | [`LegalValueLevel`](http://schema.org/LegalValueLevel) | 0..1 | The legal value of this file. Different files may have different legal values. Typically a digitally signed PDF have a "stronger" legal value than the HTML file of the same act. Values from stronger to weaker are [`DefinitiveLegalValue`](http://schema.org/DefinitiveLegalValue), [`AuthoritativeLegalValue`](http://schema.org/AuthoritativeLegalValue), [`OfficialLegalValue`](http://schema.org/OfficialLegalValue), [`UnofficialLegalValue`](http://schema.org/UnofficialLegalValue) |
 
 #### Optional properties for Legislation file
 
@@ -369,8 +369,8 @@ The description of a Modifying act is the same as the one for a Base act.
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| [`hasPart`](http://schema.org/hasPart) | Legislation (Article or another subdivision) | 0..n | A subdivision may contain other subdivisions |
-| [`legislationLegalForce`](http://schema.org/legislationLegalForce) | LegalForceStatus | 0..1 | The legal force of the article. Articles within the same act can have a different legal force. Can be InForce, NotInForce, PartiallyInForce |
+| [`hasPart`](http://schema.org/hasPart) | [Legislation (Article or other subdivision)](#article-or-other-subdivision) | 0..n | A subdivision may contain other subdivisions |
+| [`legislationLegalForce`](http://schema.org/legislationLegalForce) | [`LegalForceStatus`](http://schema.org/LegalForceStatus) | 0..1 | The legal force of the article. Articles within the same act can have a different legal force. Can be [`InForce`](http://schema.org/InForce), [`NotInForce`](http://schema.org/NotInForce), [`PartiallyInForce`](http://schema.org/PartiallyInForce) |
 | [`text`](http://schema.org/text) |  xsd:string | 0..1 | May contain the textual content of the article, as a plain string |
 
 #### Optional properties for Article or other subdivision
@@ -379,8 +379,8 @@ The description of a Modifying act is the same as the one for a Base act.
 | ---------| ----- | ----- | ---------- |
 | [`spatialCoverage`](http://schema.org/spatialCoverage) | [`Place`](http://schema.org/Place) |  0..n | Articles within the same act can have different applicability areas |
 | [`temporalCoverage`](http://schema.org/temporalCoverage) | xsd:string | 0..1 | In force range of this article, from the date it was set in force to the date it was repealed. Use ISO 8601 time interval format, and use `xxxx-xx-xx/..` to represent an open-ended interval |
-| all [Legal analysis properties](#legal-analysis-properties) | Legislation (Act version or Article thereof) | 0..n | When the article is an article of a base act or a modifying act, it may have legal analysis links to act versions, or articles thereof |
-| `@reverse` all [Legal analysis properties](#legal-analysis-properties) | Legislation (Modifying Act or Article thereof) | 0..n | When the article is an article of a an act version, it may have backward legal analysis links from modifying acts ot article thereof. (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
+| all [Legal analysis properties](#legal-analysis-properties) | Legislation ([Act version](#act-version) or [Article thereof](#article-or-other-subdivision) | 0..n | When the article is an article of a base act or a modifying act, it may have legal analysis links to act versions, or articles thereof |
+| `@reverse` all [Legal analysis properties](#legal-analysis-properties) | Legislation ([Modifying Act](#modifying-act) or [Article thereof](#article-or-other-subdivision)) | 0..n | When the article is an article of a an act version, it may have backward legal analysis links from modifying acts ot article thereof. (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
 
 #### Example
 
@@ -391,22 +391,22 @@ The description of a Modifying act is the same as the one for a Base act.
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| [`citation`](http://schema.org/citation) | CreativeWork | 0..n | Legal citation in the text |
-| [`isBasedOn`](http://schema.org/isBasedOn) | Legislation | 0..n | Indicates that an act relies on another, typically secondary legislation is based on primary legislation, itself based on constitution |
+| [`citation`](http://schema.org/citation) | [`CreativeWork`](http://schema.org/CreativeWork) | 0..n | Legal citation in the text |
+| [`isBasedOn`](http://schema.org/isBasedOn) | [`Legislation`](http://schema.org/Legislation) | 0..n | Indicates that an act relies on another, typically secondary legislation is based on primary legislation, itself based on constitution. Not to be confused with an abstract act that is based on the base act. |
 | [`legislationChanges`](http://schema.org/legislationChanges) | Legislation (Act version or subdivision thereof) | 0..n | Indicates a modification in the legal content of the act |
-| [`legislationAmends`](http://schema.org/legislationAmends) | Legislation (Act version or subdivision thereof) | 0..n | A modification in the content |
-| [`legislationRepeals`](http://schema.org/legislationRepeals) | Legislation (Act version or subdivision thereof) | 0..n | Cancels a legislation or an article |
-| [`legislationCommences`](http://schema.org/legislationCommences) | Legislation (Act version or subdivision thereof) | 0..n | Sets another legislation or article into force |
-| [`legislationCorrects`](http://schema.org/legislationCorrects) | Legislation (Act version or subdivision thereof) | 0..n | Indicates a correction that does not affect the legal content of the act |
+| [`legislationAmends`](http://schema.org/legislationAmends) | Legislation ([Act version](#act-version) or [subdivision thereof](#article-or-other-subdivision)) | 0..n | A modification in the content |
+| [`legislationRepeals`](http://schema.org/legislationRepeals) | Legislation ([Act version](#act-version) or [subdivision thereof](#article-or-other-subdivision)) | 0..n | Cancels a legislation or an article |
+| [`legislationCommences`](http://schema.org/legislationCommences) | Legislation ([Act version](#act-version) or [subdivision thereof](#article-or-other-subdivision)) | 0..n | Sets another legislation or article into force |
+| [`legislationCorrects`](http://schema.org/legislationCorrects) | Legislation ([Act version](#act-version) or [subdivision thereof](#article-or-other-subdivision)) | 0..n | Indicates a correction that does not affect the legal content of the act |
 
 ### Transposition and implementation properties
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| [`legislationApplies`](http://schema.org/legislationApplies) | Legislation | 0..n | Generic link to state that an act somehow transfers another act into another legislative context |
-| [`legislationTransposes`](http://schema.org/legislationTransposes) | Legislation | 0..n | Specific to EU directives transposition, with a precise, legally-binding, meaning |
-| [`legislationEnsuresImplementationOf`](http://schema.org/legislationEnsuresImplementationOf) | Legislation | 0..n | To be used for EU regulations that are not transposed, or to state that an act makes sure there is no conflict for another act to apply |
-| [`sameAs`](http://schema.org/sameAs) | Legislation (Base act) | 0..n | In the specific case where a legal act published in a different legal corpus is getting republished in this corpus, for example EU directives republished in national Official Journals, or national acts republished in local journals |
+| [`legislationApplies`](http://schema.org/legislationApplies) | [`Legislation`](http://schema.org/Legislation) | 0..n | Generic link to state that an act somehow transfers another act into another legislative context |
+| [`legislationTransposes`](http://schema.org/legislationTransposes) | [`Legislation`](http://schema.org/Legislation) | 0..n | Specific to EU directives transposition, with a precise, legally-binding, meaning |
+| [`legislationEnsuresImplementationOf`](http://schema.org/legislationEnsuresImplementationOf) | [`Legislation`](http://schema.org/Legislation) | 0..n | To be used for EU regulations that are not transposed, or to state that an act makes sure there is no conflict for another act to apply |
+| [`sameAs`](http://schema.org/sameAs) | Legislation ([Base act](#base-act)) | 0..n | In the specific case where a legal act published in a different legal corpus is getting republished in this corpus, for example EU directives republished in national Official Journals, or national acts republished in local journals |
 
 
 ### Semantic Pitfalls
