@@ -247,26 +247,26 @@ An Act version will never be described on its own, but it will always be include
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| `@reverse` workExample | Legislation (Abstract Act) | 0..1 | An Act version must be described within the context of an Abstract Act (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
-| encoding | LegislationObject | 1..n | Refers to file expressing this act version, in PDF, HTML, etc. and in a given language |
+| `@reverse` [`workExample`](http://schema.org/workExample) | Legislation (Abstract Act) | 0..1 | An Act version must be described within the context of an Abstract Act (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
+| [`encoding`](http://schema.org/encoding) | [Legislation file](#legislation-file) | 1..n | Refers to file expressing this act version, in PDF, HTML, etc. and in a given language |
 
 #### Recommended properties for Act version
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| datePublished | xsd:date | 0..n | The date at which this version was published (not to be confused with the date at which the original base act was published in the OJ) |
-| temporalCoverage |  | 0..n | The validity range of this version of the act, from the date it is consolidated to the date it is replaced by a new version. Not to be confused with the in force time span of the act itself. Use ISO 8601 time interval format, and use `xxxx-xx-xx/..` to represent an open-ended interval. |
-| legislationConsolidates |  | 0..n | Points to the base act and all modifying act taken into account in this version |
+| [`datePublished`](http://schema.org/datePublished) | xsd:date | 0..n | The date at which this version was published (not to be confused with the date at which the original base act was published in the OJ) |
+| [`temporalCoverage`](http://schema.org/temporalCoverage) |  | 0..n | The validity range of this version of the act, from the date it is consolidated to the date it is replaced by a new version. Not to be confused with the in force time span of the act itself. Use ISO 8601 time interval format, and use `xxxx-xx-xx/..` to represent an open-ended interval. |
+| [`legislationConsolidates`](http://schema.org/legislationConsolidates) |  | 0..n | Points to the base act and all modifying act taken into account in this version |
 | `@reverse` all [legal analysis properties](#legal-analysis-properties) |  | 0..n | Backward links from all modifying acts that refer to this version (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
 
 #### Optional properties for Act version
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| hasPart | Legislation (Article or other subdivision) | 0..n | Points to the articles or other subdivisions in this act version |
-| publisher | [`Organization`](http://schema.org/Organization) | 0..n | Usually refers to the service/administration in charge of publishing consolidated texts (could be different than the organization publishing the OJ) |
-| text | xsd:string | 0..1 | May contain the textual content of the act version, as a plain string |
-| version |  | 0..1 ||
+| [`hasPart`](http://schema.org/hasPart) | Legislation (Article or other subdivision) | 0..n | Points to the articles or other subdivisions in this act version |
+| [`publisher`](http://schema.org/publisher) | [`Organization`](http://schema.org/Organization) | 0..n | Usually refers to the service/administration in charge of publishing consolidated texts (could be different than the organization publishing the OJ) |
+| [`text`](http://schema.org/text) | xsd:string | 0..1 | May contain the textual content of the act version, as a plain string |
+| [`version`](http://schema.org/version) |  | 0..1 ||
 
 
 #### Example
