@@ -263,7 +263,7 @@ An Act version will never be described on its own, but it will always be include
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| hasPart | Legislation (Article or other subdivision) | 0..n ||
+| hasPart | Legislation (Article or other subdivision) | 0..n | Points to the articles or other subdivisions in this act version |
 | publisher | [`Organization`](http://schema.org/Organization) | 0..n | Usually refers to the service/administration in charge of publishing consolidated texts (could be different than the organization publishing the OJ) |
 | text | xsd:string | 0..1 | May contain the textual content of the act version, as a plain string |
 | version |  | 0..1 ||
@@ -345,7 +345,7 @@ The description of a Modifying act is the same as the one for a Base act.
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
 | copyrightHolder | [`Organization`](http://schema.org/Organization) | 0..1 ||
-| license | URL | 0..1 ||
+| license | URL | 0..1 | License URL of this file |
 | publisher | [`Organization`](http://schema.org/Organization) | 0..1 | Publisher of the file |
 
 #### Example
@@ -391,22 +391,23 @@ The description of a Modifying act is the same as the one for a Base act.
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| legislationChanges |  | 0..n ||
-| legislationAmends |  | 0..n ||
-| legislationRepeals |  | 0..n ||
-| legislationCommences |  | 0..n ||
-| legislationCorrects |  | 0..n ||
-| citation |  | 0..n ||
-| isBasedOn |  | 0..n ||
+| citation | CreativeWork | 0..n | Legal citation in the text |
+| isBasedOn | Legislation | 0..n | Indicates that an act relies on another, typically secondary legislation is based on primary legislation, itself based on constitution |
+| legislationChanges | Legislation (Act version or subdivision thereof) | 0..n | Indicates a modification in the legal content of the act |
+| legislationAmends | Legislation (Act version or subdivision thereof) | 0..n | A modification in the content |
+| legislationRepeals | Legislation (Act version or subdivision thereof) | 0..n | Cancels a legislation or an article |
+| legislationCommences | Legislation (Act version or subdivision thereof) | 0..n | Sets another legislation or article into force |
+| legislationCorrects | Legislation (Act version or subdivision thereof) | 0..n | Indicates a correction that does not affect the legal content of the act |
 
 ### Transposition and implementation properties
 
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
-| legislationApplies |  | 0..n ||
-| legislationTransposes |  | 0..n ||
-| legislationEnsuresImplementationOf |  | 0..n ||
-| sameAs |  | 0..n ||
+| legislationApplies | Legislation | 0..n | Generic link to state that an act somehow transfers another act into another legislative context |
+| legislationTransposes | Legislation | 0..n | Specific to EU directives transposition, with a precise, legally-binding, meaning |
+| legislationEnsuresImplementationOf | Legislation | 0..n | To be used for EU regulations that are not transposed, or to state that an act makes sure there is no conflict for another act to apply |
+| sameAs | Legislation (Base act) | 0..n | In the specific case where a legal act published in a different legal corpus is getting republished in this corpus, for example EU directives republished in national Official Journals, or national acts republished in local journals |
+
 
 ### Semantic Pitfalls
 
