@@ -264,7 +264,7 @@ An Act consolidated version will never be described on its own, but it will alwa
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
 | [`datePublished`](http://schema.org/datePublished) | xsd:date | 0..n | The date at which this version was published (not to be confused with the date at which the original base act was published in the OJ) |
-| [`legislationConsolidates`](http://schema.org/legislationConsolidates) | [Legislation (Base act)](#base-act) | 0..n | Points to the base act and all modifying act taken into account in this version |
+| [`legislationConsolidates`](http://schema.org/legislationConsolidates) | [Legislation (Base act)](#act-base-act-or-modifying-act) | 0..n | Points to the base act and all modifying act taken into account in this version |
 | [`legislationLegalForce`](http://schema.org/legislationLegalForce) | [`LegalForceStatus`](http://schema.org/LegalForceStatus) | 0..1 | Indicate the validity of that specific version of the act, as opposed the in-force status of the whole act itself. Can be [`InForce`](http://schema.org/InForce) or [`NotInForce`](http://schema.org/NotInForce) |
 | [`temporalCoverage`](http://schema.org/temporalCoverage) | [`Place`](http://schema.org/Place) | 0..n | The validity range of this version of the act, from the date it is consolidated to the date it is replaced by a new version. Not to be confused with the in force time span of the act itself. Use ISO 8601 time interval format, and use `xxxx-xx-xx/..` to represent an open-ended interval. |
 | `@reverse` all [legal analysis properties](#legal-analysis-properties) | - | 0..n | Backward links from all modifying acts that refer to this version (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
@@ -346,7 +346,7 @@ The Abstract act will usually be used within the markup for a specific version o
 | Property | Range | Card. | Usage Note |
 | ---------| ----- | ----- | ---------- |
 | [`inLanguage`](http://schema.org/inLanguage) | xsd:string | 0..n | Use 2-letters language codes. Repeat if act is multilingual |
-| [`isBasedOn`](http://schema.org/isBasedOn) | [Legislation (Base Act)](#base-act) | 0..n | Refers to the URI of the Base Act. Although not strictly mandatory if you describe only the abstract act, and not the base act, this is highly recommended  |
+| [`isBasedOn`](http://schema.org/isBasedOn) | [Legislation (Base Act)](#act-base-act-or-modifying-act) | 0..n | Refers to the URI of the Base Act. Although not strictly mandatory if you describe only the abstract act, and not the base act, this is highly recommended  |
 | [`legislationIdentifier`](http://schema.org/legislationIdentifier) | xsd:string | 0..1 | Number for the act |
 | [`legislationDate`](http://schema.org/legislationDate) | xsd:date | 0..1 | Date at which the text became an act |
 | [`legislationDateVersion`](http://schema.org/legislationDateVersion) | xsd:date | 0..1 | |
@@ -396,6 +396,8 @@ The Abstract act will usually be used within the markup for a specific version o
 
 ### Legislation file
 
+A Legislation file, or `LegislationObject` in schema.org naming, is the encoding of a an act, or act version, in a given language and in a given file format. An act or act version will typically be associated to different files of the same text, each in a different format and possibly a different language when the legislation is multilingual.
+
 #### Mandatory properties for Legislation file
 
 | Property | Range | Card. | Usage Note |
@@ -405,7 +407,7 @@ The Abstract act will usually be used within the markup for a specific version o
 | [`contentUrl`](http://schema.org/contentUrl) | URL | 1..1 | URL of the actual file |
 | [`encodingFormat`](http://schema.org/encodingFormat) | xsd:string | 1..1 | Media type as a MIME format e.g. application/pdf, text/html, application/xml |
 | [`inLanguage`](http://schema.org/inLanguage) | xsd:string | 1..n | Language of the document. Use 2-letters language codes. In the rare case that the _same document_ contains the act text in multiple languages, that property can be repeated at this level. |
-| `@reverse` [`encoding`](http://schema.org/encoding) | [Legislation (Base Act)](#base-act) or [Legislation (Act Version)](#act-consolidated-version) | 1..1 | Backward link from the base act or the act version encoded by this legislation file. (`@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
+| `@reverse` [`encoding`](http://schema.org/encoding) | [Legislation (Base Act)](#act-base-act-or-modifying-act) or [Legislation (Act Version)](#act-consolidated-version) | 1..1 | Backward link from the base act or the act version encoded by this legislation file. (`@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
 
 #### Recommended properties for Legislation file
 
@@ -469,8 +471,6 @@ The Abstract act will usually be used within the markup for a specific version o
 }
 ```
 
-
-
 ### Article or other subdivision
 
 
@@ -497,7 +497,7 @@ The Abstract act will usually be used within the markup for a specific version o
 | [`spatialCoverage`](http://schema.org/spatialCoverage) | [`Place`](http://schema.org/Place) |  0..n | Articles within the same act can have different applicability areas |
 | [`temporalCoverage`](http://schema.org/temporalCoverage) | xsd:string | 0..1 | In force range of this article, from the date it was set in force to the date it was repealed. Use ISO 8601 time interval format, and use `xxxx-xx-xx/..` to represent an open-ended interval |
 | all [Legal analysis properties](#legal-analysis-properties) | Legislation ([Act version](#act-consolidated-version) or [Article thereof](#article-or-other-subdivision)) | 0..n | When the article is an article of a base act or a modifying act, it may have legal analysis links to act versions, or articles thereof |
-| `@reverse` all [Legal analysis properties](#legal-analysis-properties) | Legislation ([Modifying Act](#modifying-act) or [Article thereof](#article-or-other-subdivision)) | 0..n | When the article is an article of a an act version, it may have backward legal analysis links from modifying acts ot article thereof. (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
+| `@reverse` all [Legal analysis properties](#legal-analysis-properties) | Legislation ([Modifying Act](#act-base-act-or-modifying-act) or [Article thereof](#article-or-other-subdivision)) | 0..n | When the article is an article of a an act version, it may have backward legal analysis links from modifying acts ot article thereof. (the `@reverse` notation indicate we are expecting this entity to be the _value_ / _object_ of the property, and not its subject.) |
 
 #### Example
 
@@ -549,7 +549,7 @@ The Abstract act will usually be used within the markup for a specific version o
 | [`legislationApplies`](http://schema.org/legislationApplies) | [`Legislation`](http://schema.org/Legislation) | 0..n | Generic link to state that an act somehow transfers another act into another legislative context |
 | [`legislationTransposes`](http://schema.org/legislationTransposes) | [`Legislation`](http://schema.org/Legislation) | 0..n | Specific to EU directives transposition, with a precise, legally-binding, meaning |
 | [`legislationEnsuresImplementationOf`](http://schema.org/legislationEnsuresImplementationOf) | [`Legislation`](http://schema.org/Legislation) | 0..n | To be used for EU regulations that are not transposed, or to state that an act makes sure there is no conflict for another act to apply |
-| [`sameAs`](http://schema.org/sameAs) | Legislation ([Base act](#base-act)) | 0..n | In the specific case where a legal act published in a different legal corpus is getting republished in this corpus, for example EU directives republished in national Official Journals, or national acts republished in local journals |
+| [`sameAs`](http://schema.org/sameAs) | Legislation ([Base act](#act-base-act-or-modifying-act)) | 0..n | In the specific case where a legal act published in a different legal corpus is getting republished in this corpus, for example EU directives republished in national Official Journals, or national acts republished in local journals |
 
 
 ### Semantic Pitfalls
