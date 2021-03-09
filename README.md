@@ -177,7 +177,7 @@ In addition to the legal analysis relationships described above that refer to ac
 
 ### Act (Base act or Modifying act)
 
-The description of a Base act or modifying act has the same structure.
+An act as published in an official journal. The description of a base act or modifying act has the same structure.
 
 #### Mandatory properties for Act (Base act or Modifying act)
 
@@ -249,7 +249,7 @@ The description of a Base act or modifying act has the same structure.
 
 ### Act consolidated version
 
-An Act consolidated version will never be described on its own, but it will always be included in the Abstract act description inside a `workExample` property (see the section on [Abstract act]((#abstract-act)).
+A given consolidated version of an act. An Act consolidated version will never be described on its own, but it will always be included in the Abstract act description inside a `workExample` property (see the section on [Abstract act]((#abstract-act)).
 
 #### Mandatory properties for Act consolidated version
 
@@ -474,6 +474,7 @@ A Legislation file, or `LegislationObject` in schema.org naming, is the encoding
 
 ### Article or other subdivision
 
+A subdivision inside an act, or inside an act consolidated version, typically an article.
 
 #### Mandatory properties for Article or other subdivision
 
