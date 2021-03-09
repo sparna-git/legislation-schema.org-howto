@@ -1,5 +1,5 @@
   - _last updated_ : 2021-03-09
-  - _author_ : Thomas Francart (thomas [dot] francart [at] sparna [dot] fr) 
+  - _author_ : [Thomas Francart](https://github.com/tfrancart)
   - _reviewer_ : Jean Delahousse
   - _status_ : **First stable version**
   - _feedback_ : please send your feedback on this document by filing an issue in the Github repository [{{ site.github.repository_name }}]({{ site.github.repository_url }})
